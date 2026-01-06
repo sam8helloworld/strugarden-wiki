@@ -51,7 +51,7 @@ LV45の状態で[ドラゴニアメインクエスト第1話](https://wiki.strug
 | [格闘士](./fighter.md)   | → | [幻闘士](./illusionary_fighter.md)   |
 | [守護魔導師](./guardian_mage.md) | → | [次元天導師](./dimensional_archon.md) |
 | [精霊魔導師](./spirit_mage.md) | → | [召喚天導師](./summoning_celestial_guide.md) |
-| [黒印魔導師](./black_seal_magician.md) | → | 錬金天導師 |
+| [黒印魔導師](./black_seal_magician.md) | → | [錬金天導師](./alchemic_grand_sage.md) |
 | 盗賊    | → | 忍者    |
 
 
