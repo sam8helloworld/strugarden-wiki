@@ -37,7 +37,7 @@
 
 単独での冒険は非常に困難であることは確かです。
 
-■サイドジョブ:[格闘士](./fighter.md) 精霊魔導師
+■サイドジョブ:[格闘士](./fighter.md) [精霊魔導師](./spirit_mage.md)
 
 ■上級職:[次元天導師](./dimensional_archon.md)
 
