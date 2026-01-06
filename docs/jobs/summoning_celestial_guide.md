@@ -22,7 +22,7 @@
 『精霊魔導師』ならば、クラスチェンジして召喚獣を呼び出せ！
 
 ■下位ジョブ：[精霊魔導師](./spirit_mage.md)  
-■サイドジョブ：[守護魔導師](./guardian_mage.md)　黒印魔導師
+■サイドジョブ：[守護魔導師](./guardian_mage.md)　[黒印魔導師](./black_seal_magician.md)
 
 
 
