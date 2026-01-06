@@ -52,7 +52,7 @@ LV45の状態で[ドラゴニアメインクエスト第1話](https://wiki.strug
 | [守護魔導師](./guardian_mage.md) | → | [次元天導師](./dimensional_archon.md) |
 | [精霊魔導師](./spirit_mage.md) | → | [召喚天導師](./summoning_celestial_guide.md) |
 | [黒印魔導師](./black_seal_magician.md) | → | [錬金天導師](./alchemic_grand_sage.md) |
-| 盗賊    | → | 忍者    |
+| [盗賊](./thief.md)    | → | 忍者    |
 
 
 ## 各職業の特徴 [†](https://wiki.strugarden.pluslake.net/%E8%81%B7%E6%A5%AD%23e031032d "e031032d")
