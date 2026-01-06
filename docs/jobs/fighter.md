@@ -33,7 +33,7 @@
 攻撃が飛び交う最前線では、常に危険が付きまとう  
 職業でもあります。
 
-■サイドジョブ:[戦士](./warrior.md) 守護魔導師  
+■サイドジョブ:[戦士](./warrior.md) [守護魔導師](./guardian_mage.md)  
 ■上位ジョブ:[幻闘士](./illusionary_fighter.md)
 
 
