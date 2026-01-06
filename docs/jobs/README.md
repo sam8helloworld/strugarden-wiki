@@ -48,9 +48,9 @@ LV45の状態で[ドラゴニアメインクエスト第1話](https://wiki.strug
 
 | 戦士    | → | 騎士    |
 |-------|---|-------|
-| 格闘士   | → | 幻闘士   |
-| 守護魔導師 | → | 次元天導師 |
-| 精霊魔導師 | → | 召喚天導師 |
+| [格闘士](./fighter.md)   | → | [幻闘士](./illusionary_fighter.md)   |
+| [守護魔導師](./guardian_mage.md) | → | [次元天導師](./dimensional_archon.md) |
+| [精霊魔導師](./spirit_mage.md) | → | [召喚天導師](./summoning_celestial_guide.md) |
 | 黒印魔導師 | → | 錬金天導師 |
 | 盗賊    | → | 忍者    |
 
