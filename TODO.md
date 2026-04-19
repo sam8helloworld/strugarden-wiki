@@ -123,8 +123,18 @@
 | /アイテム/食べ物 | `items/food.md` | ✅ |
 | /アイテム/薬品 | `items/medicine.md` | ✅ |
 | /アイテム/報酬権利書 | `items/remuneration_entitlement.md` | ✅ |
-| /アイテム/その他 | `items/other.md` | ⬜ |
-| /アイテム/その他/デッキ | `items/deck.md` | ⬜ |
+| /アイテム/その他 | `items/other.md` | ✅ |
+| /アイテム/その他/デッキ | `items/other/deck.md` | ✅ |
+| /アイテム/その他/宝箱と鍵 | `items/other/treasure_box.md` | ✅ |
+| /アイテム/その他/誕生石 | `items/other/birthstone.md` | ✅ |
+| /アイテム/その他/誕生プレゼント | `items/other/birthday_present.md` | ✅ |
+| /アイテム/その他/〜の知識 | `items/other/monster_knowledge.md` | ✅ |
+| /アイテム/その他/謎の袋 | `items/other/mystery_bag.md` | ✅ |
+| /アイテム/その他/争奪褒賞品 | `items/other/battle_reward.md` | ✅ |
+| /アイテム/その他/函の欠片 | `items/other/box_fragment.md` | ✅ |
+| /アイテム/その他/デュエルMAP | `items/other/duel_map.md` | ✅ |
+| /アイテム/その他/お守り | `items/other/amulet.md` | ✅ |
+| /アイテム/その他/その他（クエストアイテム） | `items/other/quest_items.md` | ✅ |
 
 ---
 
@@ -226,7 +236,7 @@ lv1-15, lv16-25, lv26-35, lv36-50, dragonia, dungeon, precious_floppy
 | Tips・基本情報 | 0 | 7 | 7 |
 | 国・クエスト | 0 | 24 | 24 |
 | 職業 | 12 | 4 | 16 |
-| アイテム | 6 | 2 | 8 |
+| アイテム | 19 | 0 | 19 |
 | 生産 | 0 | 10 | 10 |
 | 戦闘（敵スキル） | 11 | 0 | 11 |
 | 戦闘（モンスター） | 7 | 0 | 7 |
@@ -235,4 +245,4 @@ lv1-15, lv16-25, lv26-35, lv36-50, dragonia, dungeon, precious_floppy
 | ファミリア種族別 | 0 | 12 | 12 |
 | ストラモール | 0 | 6 | 6 |
 | ギルド | 0 | 1 | 1 |
-| **合計** | **41** | **71** | **112** |
+| **合計** | **54** | **69** | **123** |
