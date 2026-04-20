@@ -193,18 +193,18 @@ lv1-15, lv16-25, lv26-35, lv36-50, dragonia, dungeon, precious_floppy
 
 | wikiページ | ファイル | 状態 |
 |-----------|----------|------|
-| /ファミリア/飛行系/鳥系 | `familiar/flying/bird.md` | ⬜ |
-| /ファミリア/飛行系/ハーピー系 | `familiar/flying/harpy.md` | ⬜ |
-| /ファミリア/動物系/うさぎ系 | `familiar/animal/rabbit.md` | ⬜ |
-| /ファミリア/動物系/くま系 | `familiar/animal/bear.md` | ⬜ |
-| /ファミリア/動物系/たぬき系 | `familiar/animal/raccoon.md` | ⬜ |
-| /ファミリア/亜人系/ゴブリン系 | `familiar/demi-human/goblin.md` | ⬜ |
-| /ファミリア/亜人系/アルマジロ系 | `familiar/demi-human/armadillo.md` | ⬜ |
-| /ファミリア/両生系/蛇系 | `familiar/amphibian/snake.md` | ⬜ |
-| /ファミリア/両生系/蛙系 | `familiar/amphibian/frog.md` | ⬜ |
-| /ファミリア/両生系/亀系 | `familiar/amphibian/turtle.md` | ⬜ |
-| /ファミリア/妖精系/プチドラゴン系 | `familiar/fairy/petit_dragon.md` | ⬜ |
-| /ファミリア/魔生系/ゴーレム系 | `familiar/demon/golem.md` | ⬜ |
+| /ファミリア/飛行系/鳥系 | `familiar/flying/bird.md` | ✅ |
+| /ファミリア/飛行系/ハーピー系 | `familiar/flying/harpy.md` | ✅ |
+| /ファミリア/動物系/うさぎ系 | `familiar/animal/rabbit.md` | ✅ |
+| /ファミリア/動物系/くま系 | `familiar/animal/bear.md` | ✅ |
+| /ファミリア/動物系/たぬき系 | `familiar/animal/raccoon.md` | ✅ |
+| /ファミリア/亜人系/ゴブリン系 | `familiar/demi-human/goblin.md` | ✅ |
+| /ファミリア/亜人系/アルマジロ系 | `familiar/demi-human/armadillo.md` | ✅ |
+| /ファミリア/両生系/蛇系 | `familiar/amphibian/snake.md` | ✅ |
+| /ファミリア/両生系/蛙系 | `familiar/amphibian/frog.md` | ✅ |
+| /ファミリア/両生系/亀系 | `familiar/amphibian/turtle.md` | ✅ |
+| /ファミリア/妖精系/プチドラゴン系 | `familiar/fairy/petit_dragon.md` | ✅ |
+| /ファミリア/魔生系/ゴーレム系 | `familiar/demon/golem.md` | ✅ |
 
 ---
 
@@ -242,7 +242,7 @@ lv1-15, lv16-25, lv26-35, lv36-50, dragonia, dungeon, precious_floppy
 | 戦闘（モンスター） | 7 | 0 | 7 |
 | 戦闘（その他） | 1 | 5 | 6 |
 | ファミリア基本 | 4 | 0 | 4 |
-| ファミリア種族別 | 0 | 12 | 12 |
+| ファミリア種族別 | 12 | 0 | 12 |
 | ストラモール | 0 | 6 | 6 |
 | ギルド | 0 | 1 | 1 |
-| **合計** | **54** | **69** | **123** |
+| **合計** | **66** | **57** | **123** |
