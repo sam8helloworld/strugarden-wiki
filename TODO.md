@@ -142,16 +142,16 @@
 
 | wikiページ | ファイル | 状態 |
 |-----------|----------|------|
-| /生産/調理 | `production/cooking.md` | ⬜ |
-| /生産/彫金鍛冶 | `production/metalworking.md` | ⬜ |
-| /生産/木工大工 | `production/woodworking.md` | ⬜ |
-| /生産/紡績裁縫 | `production/textile.md` | ⬜ |
-| /生産/皮革加工 | `production/leatherworking.md` | ⬜ |
-| /生産/錬金術 | `production/alchemy.md` | ⬜ |
-| /生産/採取スキル | `production/gathering.md` | ⬜ |
-| /生産/釣り | `production/fishing.md` | ⬜ |
-| /生産/使役精霊 | `production/servant_spirit.md` | ⬜ |
-| /生産/資源拠点 | `production/resource_base.md` | ⬜ |
+| /生産/調理 | `production/cooking.md` | ✅ |
+| /生産/彫金鍛冶 | `production/metalworking.md` | ✅ |
+| /生産/木工大工 | `production/woodworking.md` | ✅ |
+| /生産/紡績裁縫 | `production/textile.md` | ✅ |
+| /生産/皮革加工 | `production/leatherworking.md` | ✅ |
+| /生産/錬金術 | `production/alchemy.md` | ✅ |
+| /生産/採取スキル | `production/gathering.md` | ✅ |
+| /生産/釣り | `production/fishing.md` | ✅ |
+| /生産/使役精霊 | `production/servant_spirit.md` | ✅ |
+| /生産/資源拠点 | `production/resource_base.md` | ✅ |
 
 ---
 
@@ -237,7 +237,7 @@ lv1-15, lv16-25, lv26-35, lv36-50, dragonia, dungeon, precious_floppy
 | 国・クエスト | 0 | 24 | 24 |
 | 職業 | 12 | 4 | 16 |
 | アイテム | 19 | 0 | 19 |
-| 生産 | 0 | 10 | 10 |
+| 生産 | 10 | 0 | 10 |
 | 戦闘（敵スキル） | 11 | 0 | 11 |
 | 戦闘（モンスター） | 7 | 0 | 7 |
 | 戦闘（その他） | 1 | 5 | 6 |
@@ -245,4 +245,4 @@ lv1-15, lv16-25, lv26-35, lv36-50, dragonia, dungeon, precious_floppy
 | ファミリア種族別 | 12 | 0 | 12 |
 | ストラモール | 0 | 6 | 6 |
 | ギルド | 0 | 1 | 1 |
-| **合計** | **66** | **57** | **123** |
+| **合計** | **76** | **47** | **123** |
