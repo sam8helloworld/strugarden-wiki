@@ -1,0 +1,314 @@
+# ジョブ定義マスター
+# 全12ジョブのステータスと基本情報
+# 上位ジョブの解放条件: Lv45 + ドラゴニアメインクエスト第1話相当
+
+jobs:
+
+  # ==============================
+  # 基本ジョブ (6種)
+  # ==============================
+
+  warrior:
+    id: warrior
+    name: 戦士
+    tier: base
+    emoji: ⚔️
+    color: "#e05050"
+    desc: 重装備の近距離戦士。高い防御力と多様な武器を使いこなす。
+    side_jobs: [thief, fighter]
+    advanced_job: knight
+    equipment:
+      weapons: [片手剣, 両手剣, 片手斧, 両手斧, 棍棒, 刀, 槍, ポールウェポン]
+      armor: [重鎧(上), 重鎧(下), 重兜, 重篭手, ブーツ, 盾]
+    stats:
+      hp_max: 120
+      ap_max: 100
+      attack: 80
+      defense: 40
+      magic_defense: 20
+      hit_rate: 80
+      evade_rate: 30
+      speed: 40
+      movement: 3
+      cup: 1   # 登れる段差上限
+      cdn: 2   # 降りられる段差上限
+
+  fighter:
+    id: fighter
+    name: 格闘士
+    tier: base
+    emoji: 👊
+    color: "#e07030"
+    desc: 素手による格闘技の達人。高い攻撃力と機動性を誇る。
+    side_jobs: [warrior, guardian]
+    advanced_job: illusionary_fighter
+    equipment:
+      weapons: [格闘]
+      armor: [道衣(上), 道衣(下), 鉢巻, 拳帯, 格闘ブーツ]
+    stats:
+      hp_max: 100
+      ap_max: 100
+      attack: 90
+      defense: 25
+      magic_defense: 15
+      hit_rate: 85
+      evade_rate: 40
+      speed: 60
+      movement: 4
+      cup: 2
+      cdn: 3
+
+  thief:
+    id: thief
+    name: 盗賊
+    tier: base
+    emoji: 🏹
+    color: "#40c060"
+    desc: 高い移動力と遠距離攻撃を持つスナイパー。罠や奇襲が得意。
+    side_jobs: [fighter, black]
+    advanced_job: ninja
+    equipment:
+      weapons: [短剣, 弓, 銃, ボウガン]
+      armor: [軽鎧(上), 軽鎧(下), 軽兜, 軽篭手, 軽ブーツ]
+    stats:
+      hp_max: 80
+      ap_max: 100
+      attack: 70
+      defense: 20
+      magic_defense: 15
+      hit_rate: 90
+      evade_rate: 50
+      speed: 60
+      movement: 5
+      cup: 1
+      cdn: 3
+
+  guardian:
+    id: guardian
+    name: 守護魔導師
+    tier: base
+    emoji: 🛡️
+    color: "#4090d0"
+    desc: 回復・治療・バリア・バフを操る後衛サポーター。
+    side_jobs: [fighter, spirit]
+    advanced_job: dimensional_archon
+    equipment:
+      weapons: [杖, 棍棒]
+      armor: [服/ローブ(上), ローブ(下), 帽子, 手袋, 盾]
+    stats:
+      hp_max: 90
+      ap_max: 100
+      attack: 60
+      defense: 35
+      magic_defense: 40
+      hit_rate: 75
+      evade_rate: 35
+      speed: 40
+      movement: 4
+      cup: 1
+      cdn: 1
+
+  spirit:
+    id: spirit
+    name: 精霊魔導師
+    tier: base
+    emoji: ✨
+    color: "#a060d0"
+    desc: 炎・冷気・電撃・風・岩の属性魔法を操る攻撃魔導師。
+    side_jobs: [guardian, black]
+    advanced_job: summoning_celestial_guide
+    equipment:
+      weapons: [杖]
+      armor: [ローブ(上), ローブ(下), 帽子, 手袋]
+    stats:
+      hp_max: 75
+      ap_max: 100
+      attack: 100
+      defense: 15
+      magic_defense: 30
+      hit_rate: 80
+      evade_rate: 40
+      speed: 20
+      movement: 4
+      cup: 1
+      cdn: 1
+
+  black:
+    id: black
+    name: 黒印魔導師
+    tier: base
+    emoji: 💀
+    color: "#8060a0"
+    desc: 戦場に黒印(魔法陣)を仕掛けるトラップ使い。
+    side_jobs: [spirit, thief]
+    advanced_job: alchemic_grand_sage
+    equipment:
+      weapons: [杖, 短剣]
+      armor: [ローブ(上), ローブ(下), 帽子, 手袋]
+    stats:
+      hp_max: 80
+      ap_max: 100
+      attack: 85
+      defense: 20
+      magic_defense: 25
+      hit_rate: 80
+      evade_rate: 35
+      speed: 20
+      movement: 4
+      cup: 1
+      cdn: 2
+
+  # ==============================
+  # 上位ジョブ (6種)
+  # 解放条件: Lv45 + アンロック条件達成
+  # ==============================
+
+  knight:
+    id: knight
+    name: 騎士
+    tier: advanced
+    base_job: warrior
+    emoji: 🏰
+    color: "#d0a030"
+    desc: 戦士が極めた騎士道の達人。陣形スキルで味方全体をバフし戦場を支配する。
+    side_jobs: [fighter, guardian]
+    equipment:
+      weapons: [片手剣, 両手剣, 片手斧, 両手斧, 棍棒, 刀, 槍, ポールウェポン]
+      armor: [重鎧(上), 重鎧(下), 重兜, 重篭手, ブーツ, 盾]
+    stats:
+      hp_max: 135
+      ap_max: 100
+      attack: 90
+      defense: 50
+      magic_defense: 25
+      hit_rate: 80
+      evade_rate: 25
+      speed: 40
+      movement: 3
+      cup: 1
+      cdn: 2
+
+  illusionary_fighter:
+    id: illusionary_fighter
+    name: 幻闘士
+    tier: advanced
+    base_job: fighter
+    emoji: 🌀
+    color: "#ff6030"
+    desc: 格闘士の極致。連続攻撃・時限爆弾拳・HP依存の復讐ダメージで翻弄する。
+    side_jobs: [warrior, guardian]
+    equipment:
+      weapons: [格闘]
+      armor: [道衣(上), 道衣(下), 鉢巻, 拳帯, 格闘ブーツ]
+    stats:
+      hp_max: 110
+      ap_max: 100
+      attack: 100
+      defense: 30
+      magic_defense: 15
+      hit_rate: 90
+      evade_rate: 50
+      speed: 60
+      movement: 4
+      cup: 2
+      cdn: 3
+
+  ninja:
+    id: ninja
+    name: 忍者
+    tier: advanced
+    base_job: thief
+    emoji: 🥷
+    color: "#208040"
+    desc: 盗賊の極致。影から手裏剣を投げバリアを無視、回復封印、瞬間移動で戦場を翻弄。
+    side_jobs: [black, warrior]
+    equipment:
+      weapons: [短剣, 弓, 銃, ボウガン, 刀]
+      armor: [忍装束(上), 忍装束(下), 頭巾, 小手, 忍ブーツ]
+    stats:
+      hp_max: 85
+      ap_max: 100
+      attack: 80
+      defense: 20
+      magic_defense: 15
+      hit_rate: 95
+      evade_rate: 60
+      speed: 60
+      movement: 5
+      cup: 1
+      cdn: 3
+
+  dimensional_archon:
+    id: dimensional_archon
+    name: 次元天導師
+    tier: advanced
+    base_job: guardian
+    emoji: 🌌
+    color: "#3060c0"
+    desc: 守護魔導師の極致。空間を歪め敵味方をテレポート/スワップし戦場を再配置する。
+    side_jobs: [fighter, spirit]
+    equipment:
+      weapons: [杖, 棍棒]
+      armor: [服/ローブ(上), ローブ(下), 帽子, 手袋, 盾]
+    stats:
+      hp_max: 95
+      ap_max: 100
+      attack: 65
+      defense: 35
+      magic_defense: 50
+      hit_rate: 80
+      evade_rate: 40
+      speed: 40
+      movement: 4
+      cup: 1
+      cdn: 1
+
+  summoning_celestial_guide:
+    id: summoning_celestial_guide
+    name: 召喚天導師
+    tier: advanced
+    base_job: spirit
+    emoji: 🦁
+    color: "#9040b0"
+    desc: 精霊魔導師の極致。多種多様な召喚獣を戦場に解き放ち戦況を支配する。
+    side_jobs: [guardian, black]
+    equipment:
+      weapons: [杖]
+      armor: [ローブ(上), ローブ(下), 帽子, 手袋]
+    stats:
+      hp_max: 80
+      ap_max: 100
+      attack: 95
+      defense: 15
+      magic_defense: 35
+      hit_rate: 80
+      evade_rate: 40
+      speed: 20
+      movement: 4
+      cup: 1
+      cdn: 1
+
+  alchemic_grand_sage:
+    id: alchemic_grand_sage
+    name: 錬金天導師
+    tier: advanced
+    base_job: black
+    emoji: ⚗️
+    color: "#b06020"
+    desc: 黒印魔導師の極致。錬金術で戦場に障害物や擬似生物を生成し地形ごと操る。
+    side_jobs: [spirit, thief]
+    equipment:
+      weapons: [杖, 短剣]
+      armor: [ローブ(上), ローブ(下), 帽子, 手袋]
+    stats:
+      hp_max: 85
+      ap_max: 100
+      attack: 90
+      defense: 20
+      magic_defense: 30
+      hit_rate: 80
+      evade_rate: 35
+      speed: 20
+      movement: 4
+      cup: 1
+      cdn: 2

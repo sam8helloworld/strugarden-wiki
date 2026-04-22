@@ -1,0 +1,146 @@
+# 装飾品マスター
+# 部位: 耳/顔/指/首/上装飾/下装飾 (6部位)
+# 全ジョブ装備可能。効果は防御強化・ステータス補助など。
+
+decorations:
+
+  # ===== 耳飾り =====
+  - id: silver_earring
+    name: シルバーイヤリング
+    slot: 耳
+    defense: 3
+    magic_defense: 5
+    desc: 魔法防御をわずかに上昇。
+
+  - id: crystal_earring
+    name: クリスタルイヤリング
+    slot: 耳
+    defense: 2
+    magic_defense: 12
+    desc: 魔法防御を中程度上昇。
+
+  - id: dragon_earring
+    name: ドラゴンイヤリング
+    slot: 耳
+    defense: 5
+    magic_defense: 20
+    evade_rate_bonus: 5
+    desc: 魔法防御と回避を上昇。
+
+  # ===== 顔装飾 =====
+  - id: iron_mask
+    name: アイアンマスク
+    slot: 顔
+    defense: 8
+    desc: 顔面への攻撃を防ぐ鉄製マスク。
+
+  - id: mage_monocle
+    name: メイジモノクル
+    slot: 顔
+    magic_attack_bonus: 5
+    hit_rate_bonus: 5
+    desc: 魔法命中と魔法攻撃が上昇。
+
+  - id: shadow_mask
+    name: シャドウマスク
+    slot: 顔
+    evade_rate_bonus: 8
+    hit_rate_bonus: 3
+    desc: 回避と命中を上昇。盗賊・忍者向け。
+
+  # ===== 指輪 =====
+  - id: power_ring
+    name: パワーリング
+    slot: 指
+    attack_bonus: 8
+    desc: 物理攻撃力を上昇。
+
+  - id: magic_ring
+    name: マジックリング
+    slot: 指
+    magic_attack_bonus: 8
+    desc: 魔法攻撃力を上昇。
+
+  - id: speed_ring
+    name: スピードリング
+    slot: 指
+    speed_bonus: 10
+    desc: 行動スピードを上昇。
+
+  - id: guard_ring
+    name: ガードリング
+    slot: 指
+    defense: 6
+    magic_defense: 6
+    desc: 物理・魔法防御を上昇。
+
+  # ===== 首飾り =====
+  - id: health_necklace
+    name: ヘルスネックレス
+    slot: 首
+    hp_max_bonus: 15
+    desc: 最大HPが上昇。
+
+  - id: mana_necklace
+    name: マナネックレス
+    slot: 首
+    ap_max_bonus: 10
+    desc: 最大APが上昇。
+
+  - id: fire_pendant
+    name: ファイアペンダント
+    slot: 首
+    fire_resistance: 15
+    desc: 炎熱ダメージを軽減。
+
+  - id: ice_pendant
+    name: アイスペンダント
+    slot: 首
+    cold_resistance: 15
+    desc: 冷気ダメージを軽減。
+
+  - id: thunder_pendant
+    name: サンダーペンダント
+    slot: 首
+    thunder_resistance: 15
+    desc: 電撃ダメージを軽減。
+
+  # ===== 上装飾 =====
+  - id: warrior_badge
+    name: ウォリアーバッジ
+    slot: 上装飾
+    attack_bonus: 5
+    defense: 5
+    desc: 戦士向け万能バッジ。
+
+  - id: mage_brooch
+    name: メイジブローチ
+    slot: 上装飾
+    magic_attack_bonus: 6
+    magic_defense: 8
+    desc: 魔法職向けブローチ。
+
+  - id: regen_brooch
+    name: リジェネブローチ
+    slot: 上装飾
+    hp_regen_per_turn: 2
+    desc: ターン開始時に少量HP回復。
+
+  # ===== 下装飾 =====
+  - id: movement_belt
+    name: ムーブメントベルト
+    slot: 下装飾
+    movement_bonus: 1
+    desc: 移動量が1増加。
+
+  - id: evasion_belt
+    name: エヴェイジョンベルト
+    slot: 下装飾
+    evade_rate_bonus: 10
+    desc: 回避率が上昇。
+
+  - id: power_belt
+    name: パワーベルト
+    slot: 下装飾
+    attack_bonus: 10
+    desc: 物理攻撃力が上昇。

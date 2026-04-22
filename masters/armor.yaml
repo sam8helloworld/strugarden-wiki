@@ -1,0 +1,257 @@
+# 防具マスター
+# 部位: 頭(兜/帽子)/腕(篭手/手袋)/胴上(鎧上/服/ローブ)/胴下(鎧下/ローブ)/脚(ブーツ)/盾
+# 重量: 軽/中/重 (重いほど移動量・スピードが低下)
+# 重量別移動量目安: 軽=5歩, 中=4歩, 重=3歩
+
+armor:
+
+  # ===== 頭部 =====
+
+  ## 兜 (戦士系)
+  - id: light_helm
+    name: ライトヘルム
+    slot: 頭
+    type: 兜
+    weight: light
+    defense: 12
+    jobs: [warrior, knight, fighter, illusionary_fighter]
+
+  - id: iron_helm
+    name: アイアンヘルム
+    slot: 頭
+    type: 兜
+    weight: medium
+    defense: 22
+    jobs: [warrior, knight]
+
+  - id: great_helm
+    name: グレートヘルム
+    slot: 頭
+    type: 兜
+    weight: heavy
+    defense: 35
+    jobs: [warrior, knight]
+
+  ## 帽子 (魔法系)
+  - id: cloth_hat
+    name: クロスハット
+    slot: 頭
+    type: 帽子
+    weight: light
+    defense: 5
+    magic_defense: 15
+    jobs: [guardian, dimensional_archon, spirit, summoning_celestial_guide, black, alchemic_grand_sage, thief, ninja]
+
+  - id: mage_hat
+    name: メイジハット
+    slot: 頭
+    type: 帽子
+    weight: medium
+    defense: 8
+    magic_defense: 25
+    jobs: [guardian, dimensional_archon, spirit, summoning_celestial_guide, black, alchemic_grand_sage]
+
+  - id: arch_hat
+    name: アークハット
+    slot: 頭
+    type: 帽子
+    weight: heavy
+    defense: 12
+    magic_defense: 38
+    jobs: [guardian, dimensional_archon, spirit, summoning_celestial_guide, black, alchemic_grand_sage]
+
+  # ===== 腕部 =====
+
+  ## 篭手 (戦士系)
+  - id: light_gauntlet
+    name: ライトガントレット
+    slot: 腕
+    type: 篭手
+    weight: light
+    defense: 10
+    jobs: [warrior, knight, fighter, illusionary_fighter, thief, ninja]
+
+  - id: iron_gauntlet
+    name: アイアンガントレット
+    slot: 腕
+    type: 篭手
+    weight: medium
+    defense: 18
+    jobs: [warrior, knight]
+
+  - id: heavy_gauntlet
+    name: ヘビーガントレット
+    slot: 腕
+    type: 篭手
+    weight: heavy
+    defense: 28
+    jobs: [warrior, knight]
+
+  ## 手袋 (魔法系)
+  - id: cloth_glove
+    name: クロスグローブ
+    slot: 腕
+    type: 手袋
+    weight: light
+    defense: 4
+    magic_defense: 10
+    jobs: [guardian, dimensional_archon, spirit, summoning_celestial_guide, black, alchemic_grand_sage, thief, ninja]
+
+  - id: mage_glove
+    name: メイジグローブ
+    slot: 腕
+    type: 手袋
+    weight: medium
+    defense: 7
+    magic_defense: 18
+    jobs: [guardian, dimensional_archon, spirit, summoning_celestial_guide, black, alchemic_grand_sage]
+
+  # ===== 胴部(上) =====
+
+  ## 鎧上 (戦士系)
+  - id: light_armor_upper
+    name: ライトアーマー(上)
+    slot: 胴上
+    type: 軽鎧
+    weight: light
+    defense: 20
+    jobs: [warrior, knight, thief, ninja]
+
+  - id: chain_mail_upper
+    name: チェインメイル(上)
+    slot: 胴上
+    type: 中鎧
+    weight: medium
+    defense: 35
+    jobs: [warrior, knight, fighter, illusionary_fighter]
+
+  - id: plate_mail_upper
+    name: プレートメイル(上)
+    slot: 胴上
+    type: 重鎧
+    weight: heavy
+    defense: 55
+    jobs: [warrior, knight]
+
+  ## 服/ローブ (魔法・共通)
+  - id: cloth_robe_upper
+    name: ローブ(軽)(上)
+    slot: 胴上
+    type: ローブ
+    weight: light
+    defense: 8
+    magic_defense: 20
+    desc: 軽量。移動量5歩。魔法系全般が装備可。
+    jobs: [guardian, dimensional_archon, spirit, summoning_celestial_guide, black, alchemic_grand_sage]
+
+  - id: heavy_robe_upper
+    name: ローブ(重/守護限定)(上)
+    slot: 胴上
+    type: ローブ
+    weight: heavy
+    defense: 22
+    magic_defense: 18
+    desc: 守護魔導師・次元天導師限定。物理防御が高い。
+    jobs: [guardian, dimensional_archon]
+
+  - id: cloth_shirt
+    name: 服(上)
+    slot: 胴上
+    type: 服
+    weight: medium
+    defense: 14
+    magic_defense: 14
+    desc: 守護系が盾と組み合わせて使う。
+    jobs: [guardian, dimensional_archon]
+
+  # ===== 胴部(下) =====
+
+  - id: light_armor_lower
+    name: ライトアーマー(下)
+    slot: 胴下
+    type: 軽鎧
+    weight: light
+    defense: 15
+    jobs: [warrior, knight, thief, ninja]
+
+  - id: chain_mail_lower
+    name: チェインメイル(下)
+    slot: 胴下
+    type: 中鎧
+    weight: medium
+    defense: 28
+    jobs: [warrior, knight, fighter, illusionary_fighter]
+
+  - id: plate_mail_lower
+    name: プレートメイル(下)
+    slot: 胴下
+    type: 重鎧
+    weight: heavy
+    defense: 45
+    jobs: [warrior, knight]
+
+  - id: cloth_robe_lower
+    name: ローブ(下)
+    slot: 胴下
+    type: ローブ
+    weight: light
+    defense: 6
+    magic_defense: 16
+    jobs: [guardian, dimensional_archon, spirit, summoning_celestial_guide, black, alchemic_grand_sage]
+
+  # ===== 脚部 =====
+
+  - id: light_boots
+    name: ライトブーツ
+    slot: 脚
+    type: ブーツ
+    weight: light
+    defense: 8
+    speed_bonus: 5
+    jobs: [warrior, knight, thief, ninja, fighter, illusionary_fighter]
+
+  - id: iron_boots
+    name: アイアンブーツ
+    slot: 脚
+    type: ブーツ
+    weight: medium
+    defense: 15
+    jobs: [warrior, knight]
+
+  - id: heavy_boots
+    name: ヘビーブーツ
+    slot: 脚
+    type: ブーツ
+    weight: heavy
+    defense: 22
+    jobs: [warrior, knight]
+
+  # ===== 盾 =====
+  # 守護魔導師・次元天導師のみ装備可能 (魔法職の特権)
+
+  - id: light_shield
+    name: ライトシールド
+    slot: 盾
+    type: 盾
+    weight: light
+    defense: 10
+    magic_defense: 8
+    jobs: [guardian, dimensional_archon, warrior, knight]
+
+  - id: iron_shield
+    name: アイアンシールド
+    slot: 盾
+    type: 盾
+    weight: medium
+    defense: 18
+    magic_defense: 12
+    jobs: [guardian, dimensional_archon, warrior, knight]
+
+  - id: tower_shield
+    name: タワーシールド
+    slot: 盾
+    type: 盾
+    weight: heavy
+    defense: 28
+    magic_defense: 15
+    jobs: [warrior, knight]

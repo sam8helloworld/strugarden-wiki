@@ -1,0 +1,291 @@
+# 武器マスター
+# 種別: 片手剣/両手剣/片手斧/両手斧/棍棒/刀/槍/ポールウェポン/短剣/杖/弓/銃/ボウガン
+# 重量: 軽/中/重 (重いほど装備者のスピードが低下)
+
+weapons:
+
+  # ===== 片手剣 =====
+  - id: short_sword
+    name: ショートソード
+    type: 片手剣
+    weight: light
+    attack: 30
+    desc: 扱いやすい片手剣。
+
+  - id: long_sword
+    name: ロングソード
+    type: 片手剣
+    weight: medium
+    attack: 50
+    desc: 標準的な片手剣。
+
+  - id: knight_sword
+    name: ナイトソード
+    type: 片手剣
+    weight: heavy
+    attack: 70
+    desc: 重厚な騎士の剣。
+
+  # ===== 両手剣 =====
+  - id: broad_sword
+    name: ブロードソード
+    type: 両手剣
+    weight: medium
+    attack: 65
+    desc: 両手で振る大剣。
+
+  - id: great_sword
+    name: グレートソード
+    type: 両手剣
+    weight: heavy
+    attack: 90
+    desc: 強力な両手大剣。
+
+  - id: zweihander
+    name: ツバイヘンダー
+    type: 両手剣
+    weight: heavy
+    attack: 110
+    desc: 最大級の両手剣。
+
+  # ===== 片手斧 =====
+  - id: hand_axe
+    name: ハンドアックス
+    type: 片手斧
+    weight: light
+    attack: 40
+    desc: 小型の片手斧。
+
+  - id: battle_axe_1h
+    name: バトルアックス
+    type: 片手斧
+    weight: medium
+    attack: 60
+    desc: 戦闘用片手斧。
+
+  - id: war_axe
+    name: ウォーアックス
+    type: 片手斧
+    weight: heavy
+    attack: 80
+    desc: 大型の戦斧。
+
+  # ===== 両手斧 =====
+  - id: double_axe
+    name: ダブルアックス
+    type: 両手斧
+    weight: medium
+    attack: 75
+    desc: 両刃の大斧。
+
+  - id: great_axe
+    name: グレートアックス
+    type: 両手斧
+    weight: heavy
+    attack: 100
+    desc: 巨大な両手斧。
+
+  - id: beheader
+    name: ビヘッダー
+    type: 両手斧
+    weight: heavy
+    attack: 120
+    desc: 最大級の処刑斧。
+
+  # ===== 棍棒 =====
+  - id: club
+    name: クラブ
+    type: 棍棒
+    weight: light
+    attack: 35
+    desc: 木製の棍棒。魔法職でも装備可。
+
+  - id: mace
+    name: メイス
+    type: 棍棒
+    weight: medium
+    attack: 55
+    desc: 金属製の棍棒。
+
+  - id: war_hammer
+    name: ウォーハンマー
+    type: 棍棒
+    weight: heavy
+    attack: 75
+    desc: 重厚な戦鎚。
+
+  # ===== 刀 =====
+  - id: wakizashi
+    name: 脇差
+    type: 刀
+    weight: light
+    attack: 38
+    desc: 短い日本刀。
+
+  - id: katana
+    name: 打刀
+    type: 刀
+    weight: medium
+    attack: 58
+    desc: 標準的な日本刀。
+
+  - id: nodachi
+    name: 野太刀
+    type: 刀
+    weight: heavy
+    attack: 82
+    desc: 長大な野太刀。
+
+  # ===== 槍 =====
+  - id: spear
+    name: スピア
+    type: 槍
+    weight: light
+    attack: 42
+    desc: 軽い投槍。
+
+  - id: lance
+    name: ランス
+    type: 槍
+    weight: medium
+    attack: 62
+    desc: 標準的な槍。
+
+  - id: halberd
+    name: ハルバード
+    type: 槍
+    weight: heavy
+    attack: 85
+    desc: 斧槍の一種。
+
+  # ===== ポールウェポン =====
+  - id: staff_weapon
+    name: ポールスタッフ
+    type: ポールウェポン
+    weight: light
+    attack: 40
+    desc: 長柄武器の基本形。
+
+  - id: naginata
+    name: 薙刀
+    type: ポールウェポン
+    weight: medium
+    attack: 60
+    desc: 長柄に刃のついた武器。
+
+  - id: great_lance
+    name: グレートランス
+    type: ポールウェポン
+    weight: heavy
+    attack: 80
+    desc: 巨大な長柄武器。
+
+  # ===== 短剣 =====
+  - id: dagger
+    name: ダガー
+    type: 短剣
+    weight: light
+    attack: 28
+    desc: 素早い短剣。盗賊・忍者向け。
+
+  - id: rondel
+    name: ロンデル
+    type: 短剣
+    weight: medium
+    attack: 45
+    desc: 鎧通し短剣。
+
+  - id: kris
+    name: クリス
+    type: 短剣
+    weight: heavy
+    attack: 60
+    desc: 波刃の短剣。
+
+  # ===== 杖 =====
+  - id: wand
+    name: ワンド
+    type: 杖
+    weight: light
+    magic_attack: 40
+    desc: 魔力を集める細い杖。
+
+  - id: staff
+    name: スタッフ
+    type: 杖
+    weight: medium
+    magic_attack: 65
+    desc: 標準的な魔法の杖。
+
+  - id: arch_staff
+    name: アークスタッフ
+    type: 杖
+    weight: heavy
+    magic_attack: 90
+    desc: 高位の魔法師が使う大杖。
+
+  # ===== 弓 =====
+  - id: short_bow
+    name: ショートボウ
+    type: 弓
+    weight: light
+    attack: 32
+    desc: 軽い短弓。取り回しが良い。
+
+  - id: long_bow
+    name: ロングボウ
+    type: 弓
+    weight: medium
+    attack: 52
+    desc: 射程の長い長弓。
+
+  - id: composite_bow
+    name: コンポジットボウ
+    type: 弓
+    weight: heavy
+    attack: 72
+    desc: 複合弓。高威力・長射程。
+
+  # ===== 銃 =====
+  - id: pistol
+    name: ピストル
+    type: 銃
+    weight: light
+    attack: 35
+    desc: 単発式短銃。
+
+  - id: musket
+    name: マスケット
+    type: 銃
+    weight: medium
+    attack: 58
+    desc: 長銃身のマスケット銃。
+
+  - id: sniper_rifle
+    name: スナイパーライフル
+    type: 銃
+    weight: heavy
+    attack: 80
+    desc: 超長射程の狙撃銃。
+
+  # ===== ボウガン =====
+  - id: crossbow_light
+    name: ライトクロスボウ
+    type: ボウガン
+    weight: light
+    attack: 33
+    desc: 軽量クロスボウ。
+
+  - id: crossbow_heavy
+    name: ヘビークロスボウ
+    type: ボウガン
+    weight: medium
+    attack: 55
+    desc: 標準クロスボウ。弓でも銃でも使えるスキルが使用可能。
+
+  - id: arbalest
+    name: アーバレスト
+    type: ボウガン
+    weight: heavy
+    attack: 78
+    desc: 大型クロスボウ。

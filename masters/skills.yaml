@@ -1,0 +1,3315 @@
+# スキルマスター
+# CMD: アクティブスキル (コマンドスキル)
+# PSV: パッシブスキル
+# speed: S=80, A=60, B=40, C=20, D=10, E=5, F=3
+# range_type: SELF / FORWARD_1〜5 / FORWARD_1_5 / WIDE_FRONT / CROSS_2 / RING_1 / DIAMOND_2 / ALL など
+# effect_kind: damage / heal / state_apply / push / drain / teleport_self / teleport_target / swap_positions / summon / place_object / none
+
+skills:
+
+  # ============================================================
+  # 戦士 (warrior)
+  # ============================================================
+
+  - id: side_web
+    job: warrior
+    name: サイドウェブ
+    type: CMD
+    ap: 3
+    speed: A
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 横薙ぎの一撃。基本攻撃。
+
+  - id: vertical_web
+    job: warrior
+    name: バーチカルウェブ
+    type: CMD
+    ap: 6
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 縦切りの一撃。サイドウェブより威力が高い。
+
+  - id: strash
+    job: warrior
+    name: ストラッシュ
+    type: CMD
+    ap: 12
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 強烈な斬撃。
+
+  - id: max_swing
+    job: warrior
+    name: マックススウィング
+    type: CMD
+    ap: 18
+    speed: D
+    attr: physical
+    range_type: WIDE_FRONT
+    effect_kind: damage
+    hit_count: 1
+    desc: 前方横一列を薙ぎ払う。
+
+  - id: crescent
+    job: warrior
+    name: クレセント
+    type: CMD
+    ap: 32
+    speed: D
+    attr: physical
+    range_type: WIDE_FRONT
+    effect_kind: damage
+    hit_count: 1
+    desc: 三日月斬り。広範囲を斬り払う。
+
+  - id: stinger
+    job: warrior
+    name: スティンガー
+    type: CMD
+    ap: 8
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 鋭い刺突。
+
+  - id: feint
+    job: warrior
+    name: フェイント
+    type: CMD
+    ap: 7
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: フェイントからの一撃。
+
+  - id: warrior_guard
+    job: warrior
+    name: ガード
+    type: CMD
+    ap: 4
+    speed: A
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: phys_barrier
+    desc: 物理バリアを展開する。
+
+  - id: shield_defense
+    job: warrior
+    name: シールドディフェンス
+    type: CMD
+    ap: 7
+    speed: A
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: phys_barrier
+    desc: 盾で防御を固める。
+
+  - id: volition
+    job: warrior
+    name: ボリション
+    type: CMD
+    ap: 20
+    speed: S
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 意志の力で放つ高速斬り。
+
+  - id: wavy_weapon
+    job: warrior
+    name: ウェービーウェポン
+    type: CMD
+    ap: 15
+    speed: A
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 波打つ斬撃。2マス先まで届く。
+
+  - id: guillotine
+    job: warrior
+    name: ギロチン
+    type: CMD
+    ap: 48
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 断頭台の一撃。単体に超威力。
+
+  - id: hurricane_slash
+    job: warrior
+    name: ハーリケーン
+    type: CMD
+    ap: 34
+    speed: D
+    attr: physical
+    range_type: RING_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 周囲全体を斬り裂く竜巻斬。
+
+  - id: devil_of_edge
+    job: warrior
+    name: デビルオブエッジ
+    type: CMD
+    ap: 90
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 最大威力の必殺技。
+
+  - id: warrior_run
+    job: warrior
+    name: ウォーリアーラン
+    type: CMD
+    ap: 10
+    speed: B
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 突進して攻撃。
+
+  - id: power_slash
+    job: warrior
+    name: パワースラッシュ
+    type: CMD
+    ap: 16
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 力強い一撃。防御を無視する。
+
+  - id: double_slash
+    job: warrior
+    name: ダブルスラッシュ
+    type: CMD
+    ap: 22
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 2
+    desc: 素早い連続斬り。
+
+  - id: warrior_psv_str
+    job: warrior
+    name: 戦士の体力
+    type: PSV
+    desc: HPが5%上昇する。
+
+  - id: warrior_psv_weapon
+    job: warrior
+    name: 武器鍛錬
+    type: PSV
+    desc: 物理攻撃力が3%上昇する。
+
+  # ============================================================
+  # 騎士 (knight) ※上位職
+  # ============================================================
+
+  - id: knighthood_web
+    job: knight
+    name: ナイトフッドウェブ
+    type: CMD
+    ap: 8
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 騎士の薙ぎ払い。
+
+  - id: knighthood_cut
+    job: knight
+    name: ナイトフッドカット
+    type: CMD
+    ap: 24
+    speed: C
+    attr: physical
+    range_type: WIDE_FRONT
+    effect_kind: damage
+    hit_count: 1
+    desc: 騎士の横薙ぎ斬り。
+
+  - id: knighthood_sever
+    job: knight
+    name: ナイトフッドセバー
+    type: CMD
+    ap: 42
+    speed: B
+    attr: physical
+    range_type: WIDE_FRONT
+    effect_kind: damage
+    hit_count: 1
+    desc: 騎士の必殺斬り。
+
+  - id: stretch_force
+    job: knight
+    name: ストレッチフォース
+    type: CMD
+    ap: 14
+    speed: C
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 騎士の遠距離突撃。
+
+  - id: high_stretch_force
+    job: knight
+    name: ハイストレッチフォース
+    type: CMD
+    ap: 24
+    speed: B
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 高威力の遠距離突撃。
+
+  - id: fire_formation
+    job: knight
+    name: 火の陣
+    type: CMD
+    ap: 18
+    speed: D
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: atk_up
+    area: RING_1
+    desc: 周囲の味方の攻撃力を上昇させる陣形。
+
+  - id: fierce_fire_formation
+    job: knight
+    name: 烈火の陣
+    type: CMD
+    ap: 26
+    speed: D
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: atk_up
+    area: RING_1
+    desc: 攻撃力大幅上昇の陣形。
+
+  - id: hellfire_formation
+    job: knight
+    name: 業火の陣
+    type: CMD
+    ap: 36
+    speed: D
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: atk_up
+    area: DIAMOND_2
+    desc: 広範囲の攻撃力上昇陣形。
+
+  - id: fish_scale_formation
+    job: knight
+    name: 魚鱗の陣
+    type: CMD
+    ap: 22
+    speed: D
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: def_up
+    area: RING_1
+    desc: 防御力を上昇させる陣形。
+
+  - id: dragon_scale_formation
+    job: knight
+    name: 龍鱗の陣
+    type: CMD
+    ap: 30
+    speed: D
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: def_up
+    area: RING_1
+    desc: 防御力大幅上昇の陣形。
+
+  - id: dragon_formation
+    job: knight
+    name: 龍の陣
+    type: CMD
+    ap: 40
+    speed: D
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: all_up
+    area: RING_1
+    desc: 攻撃・防御両方を上昇させる陣形。
+
+  - id: dragon_king_formation
+    job: knight
+    name: 龍王の陣
+    type: CMD
+    ap: 60
+    speed: D
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: all_up
+    area: DIAMOND_2
+    desc: 最強の全体強化陣形。
+
+  - id: knight_guard
+    job: knight
+    name: ナイトガード
+    type: CMD
+    ap: 12
+    speed: A
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: phys_barrier
+    desc: 強固な物理バリアを展開する。
+
+  - id: knight_psv_heavy
+    job: knight
+    name: 重装鍛錬
+    type: PSV
+    desc: 重量防具装備時、防御力が5%上昇する。
+
+  - id: knight_psv_formation
+    job: knight
+    name: 陣形術
+    type: PSV
+    desc: 陣形スキルの効果が10%上昇する。
+
+  # ============================================================
+  # 格闘士 (fighter)
+  # ============================================================
+
+  - id: punch
+    job: fighter
+    name: 拳突
+    type: CMD
+    ap: 3
+    speed: A
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 基本の拳打。
+
+  - id: back_fist
+    job: fighter
+    name: 背拳
+    type: CMD
+    ap: 5
+    speed: A
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 裏拳打ち。
+
+  - id: inch_punch
+    job: fighter
+    name: 寸剄
+    type: CMD
+    ap: 8
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 短距離の強烈な一撃。
+
+  - id: fist_cannon
+    job: fighter
+    name: 拳砲
+    type: CMD
+    ap: 14
+    speed: C
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 気を込めた拳撃を飛ばす。
+
+  - id: rock_fang_thrust
+    job: fighter
+    name: 岩牙突
+    type: CMD
+    ap: 18
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 岩のような拳の突き。
+
+  - id: concentration
+    job: fighter
+    name: 精神統一
+    type: CMD
+    ap: 12
+    speed: S
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: atk_up
+    desc: 次の攻撃力を大幅上昇させる。
+
+  - id: nine_shadow_amber
+    job: fighter
+    name: 九影琥
+    type: CMD
+    ap: 28
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 9
+    desc: 9連打の連続攻撃。
+
+  - id: poison_fist
+    job: fighter
+    name: 毒手拳
+    type: CMD
+    ap: 16
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    state: poison
+    desc: 毒を付与する拳。
+
+  - id: swift_fist
+    job: fighter
+    name: 迅拳
+    type: CMD
+    ap: 10
+    speed: S
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 素早い拳打。
+
+  - id: rapid_fire_fist
+    job: fighter
+    name: 連弾
+    type: CMD
+    ap: 20
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 3
+    desc: 連続する拳撃。
+
+  - id: scatter_fist
+    job: fighter
+    name: 散弾
+    type: CMD
+    ap: 22
+    speed: B
+    attr: physical
+    range_type: WIDE_FRONT
+    effect_kind: damage
+    hit_count: 1
+    desc: 前方に散らばる連打。
+
+  - id: tiger_chain_fist
+    job: fighter
+    name: 虎連弾
+    type: CMD
+    ap: 34
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 5
+    desc: 虎の如き連続拳撃。
+
+  - id: rotating_cannon_kick
+    job: fighter
+    name: 転砲脚
+    type: CMD
+    ap: 18
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    push: true
+    desc: 回転蹴りで吹き飛ばす。
+
+  - id: ground_kick
+    job: fighter
+    name: 地平脚
+    type: CMD
+    ap: 24
+    speed: C
+    attr: physical
+    range_type: WIDE_FRONT
+    effect_kind: damage
+    hit_count: 1
+    desc: 地を這う強烈な蹴り。
+
+  - id: wind_blade_kick
+    job: fighter
+    name: 風刃脚
+    type: CMD
+    ap: 32
+    speed: B
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 風を纏った蹴り。遠くまで届く。
+
+  - id: first_initiative
+    job: fighter
+    name: 先之先
+    type: CMD
+    ap: 14
+    speed: S
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 先手必勝の一撃。
+
+  - id: ki_gathering
+    job: fighter
+    name: 集気術
+    type: CMD
+    ap: 8
+    speed: A
+    attr: physical
+    range_type: SELF
+    effect_kind: heal
+    desc: 気を集めてHPを回復する。
+
+  - id: flash_slash
+    job: fighter
+    name: 裂閃光
+    type: CMD
+    ap: 30
+    speed: C
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 閃光のような斬撃。直線3マス。
+
+  - id: finger_bullet
+    job: fighter
+    name: 指弾
+    type: CMD
+    ap: 6
+    speed: B
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 指先から放つ飛び道具。
+
+  - id: ki_bullet
+    job: fighter
+    name: 気功弾
+    type: CMD
+    ap: 16
+    speed: C
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 気功で放つ弾。
+
+  - id: dragon_bullet
+    job: fighter
+    name: 龍弾
+    type: CMD
+    ap: 28
+    speed: D
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 龍の気を込めた必殺弾。
+
+  - id: fighter_guard
+    job: fighter
+    name: 防御
+    type: CMD
+    ap: 4
+    speed: A
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: phys_barrier
+    desc: 体で防御を固める。
+
+  - id: arm_lock
+    job: fighter
+    name: 腕固め
+    type: CMD
+    ap: 12
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: state_apply
+    state: immobilize
+    desc: 相手を動けなくする。
+
+  - id: fighter_psv_fist
+    job: fighter
+    name: 拳術強化
+    type: PSV
+    desc: 拳系スキルの威力が5%上昇する。
+
+  - id: fighter_psv_speed
+    job: fighter
+    name: 格闘疾走
+    type: PSV
+    desc: 移動量が1増加する。
+
+  # ============================================================
+  # 幻闘士 (illusionary_fighter) ※上位職
+  # ============================================================
+
+  - id: revenge_light
+    job: illusionary_fighter
+    name: 我業拳−仕返−
+    type: CMD
+    ap: 18
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 反撃の一撃。受けたダメージを返す。
+
+  - id: revenge_heavy
+    job: illusionary_fighter
+    name: 我業拳−復讐−
+    type: CMD
+    ap: 36
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 復讐の拳。威力が高い。
+
+  - id: revenge_grudge
+    job: illusionary_fighter
+    name: 我業拳−怨−
+    type: CMD
+    ap: 54
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 怨念の拳。さらに威力が高い。
+
+  - id: revenge_curse
+    job: illusionary_fighter
+    name: 我業拳−呪−
+    type: CMD
+    ap: 72
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 呪いの拳。最大威力。
+
+  - id: beast_chain
+    job: illusionary_fighter
+    name: 獣牙砕連
+    type: CMD
+    ap: 24
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 4
+    desc: 獣のような連続噛み砕き。
+
+  - id: dragon_chain
+    job: illusionary_fighter
+    name: 龍牙冥連
+    type: CMD
+    ap: 38
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 6
+    desc: 龍の牙による冥府連打。
+
+  - id: phantom_swift_kick
+    job: illusionary_fighter
+    name: 幻闘疾風蹴
+    type: CMD
+    ap: 35
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    push: true
+    desc: 疾風のような蹴り技。
+
+  - id: phantom_whirlwind_kick
+    job: illusionary_fighter
+    name: 幻闘旋風蹴
+    type: CMD
+    ap: 45
+    speed: D
+    attr: physical
+    range_type: RING_1
+    effect_kind: damage
+    hit_count: 1
+    push: true
+    desc: 旋風のような全体蹴り。
+
+  - id: meridian_bomb_break
+    job: illusionary_fighter
+    name: 経爆拳−破−
+    type: CMD
+    ap: 25
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 経絡爆発の拳・破。
+
+  - id: meridian_bomb_rend
+    job: illusionary_fighter
+    name: 経爆拳−裂−
+    type: CMD
+    ap: 30
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 経絡爆発の拳・裂。
+
+  - id: meridian_bomb_explode
+    job: illusionary_fighter
+    name: 経爆拳−爆−
+    type: CMD
+    ap: 35
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 経絡爆発の拳・爆。
+
+  - id: meridian_bomb_destroy
+    job: illusionary_fighter
+    name: 経爆拳−滅−
+    type: CMD
+    ap: 40
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 経絡爆発の拳・滅。最大威力。
+
+  - id: demon_mirror
+    job: illusionary_fighter
+    name: 鬼明鏡
+    type: CMD
+    ap: 20
+    speed: C
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: counter
+    desc: カウンター状態になる。
+
+  - id: forge_demon_mirror
+    job: illusionary_fighter
+    name: 煉鬼明鏡
+    type: CMD
+    ap: 32
+    speed: C
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: counter
+    desc: 強化カウンター状態になる。
+
+  - id: bind_rock_fist
+    job: illusionary_fighter
+    name: 縛岩拳
+    type: CMD
+    ap: 22
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: state_apply
+    state: immobilize
+    desc: 相手を石の如く縛り付ける。
+
+  - id: dragon_chain_fist
+    job: illusionary_fighter
+    name: 龍連弾
+    type: CMD
+    ap: 44
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 8
+    desc: 龍の連続弾丸拳。
+
+  - id: dragon_king_chain
+    job: illusionary_fighter
+    name: 龍王連弾
+    type: CMD
+    ap: 60
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 10
+    desc: 龍王の連続弾丸拳。最大連打。
+
+  - id: phantom_burial
+    job: illusionary_fighter
+    name: 幻葬
+    type: CMD
+    ap: 48
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 幻の如き一撃必殺。
+
+  - id: fallen_phantom_burial
+    job: illusionary_fighter
+    name: 堕真羅幻葬
+    type: CMD
+    ap: 70
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 究極の必殺技。
+
+  - id: illusion_fighter_psv
+    job: illusionary_fighter
+    name: 幻闘鍛錬
+    type: PSV
+    desc: 連打スキルの威力が5%上昇する。
+
+  # ============================================================
+  # 盗賊 (thief)
+  # ============================================================
+
+  - id: body_beat
+    job: thief
+    name: ボディービート
+    type: CMD
+    ap: 6
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 体への打撃。
+
+  - id: arrow_shoot
+    job: thief
+    name: アローシュート
+    type: CMD
+    ap: 5
+    speed: B
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 基本の矢攻撃。
+
+  - id: sleep_arrow
+    job: thief
+    name: スリープアロー
+    type: CMD
+    ap: 12
+    speed: C
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: state_apply
+    state: sleep
+    desc: 眠りの矢。
+
+  - id: poison_arrow
+    job: thief
+    name: ポイズンアロー
+    type: CMD
+    ap: 10
+    speed: C
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    state: poison
+    desc: 毒の矢。
+
+  - id: fire_arrow
+    job: thief
+    name: ファイアアロー
+    type: CMD
+    ap: 14
+    speed: C
+    attr: magical
+    element: fire
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 炎の矢。
+
+  - id: power_shoot
+    job: thief
+    name: パワーシュート
+    type: CMD
+    ap: 16
+    speed: C
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 強力な矢。射程が長い。
+
+  - id: drill_shoot
+    job: thief
+    name: ドリルシュート
+    type: CMD
+    ap: 20
+    speed: C
+    attr: physical
+    range_type: FORWARD_1_5
+    effect_kind: damage
+    hit_count: 1
+    desc: 貫通する矢。直線上を貫く。
+
+  - id: dragon_arrow
+    job: thief
+    name: ドラゴンアロー
+    type: CMD
+    ap: 36
+    speed: C
+    attr: physical
+    range_type: FORWARD_5
+    effect_kind: damage
+    hit_count: 1
+    desc: 龍の矢。最長射程。
+
+  - id: arrow_squall
+    job: thief
+    name: アロースコール
+    type: CMD
+    ap: 30
+    speed: D
+    attr: physical
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 矢の嵐。広範囲攻撃。
+
+  - id: bullet_fire
+    job: thief
+    name: バレットファイア
+    type: CMD
+    ap: 22
+    speed: C
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 銃弾を放つ。
+
+  - id: blind_shell
+    job: thief
+    name: ブラインドシェル
+    type: CMD
+    ap: 18
+    speed: C
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: state_apply
+    state: blind
+    desc: 目を眩ませる弾。
+
+  - id: gallop
+    job: thief
+    name: ギャロップ
+    type: CMD
+    ap: 10
+    speed: S
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 疾走しながらの攻撃。
+
+  - id: cat_surprise
+    job: thief
+    name: キャットサプライズ
+    type: CMD
+    ap: 14
+    speed: A
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 不意打ちの奇襲。
+
+  - id: steal
+    job: thief
+    name: スティール
+    type: CMD
+    ap: 8
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: drain
+    desc: 相手のアイテムを盗む。
+
+  - id: thief_escape
+    job: thief
+    name: 逃走
+    type: CMD
+    ap: 6
+    speed: S
+    attr: physical
+    range_type: SELF
+    effect_kind: state_apply
+    state: spd_up
+    desc: スピードを上げて逃げる。
+
+  - id: thief_psv_range
+    job: thief
+    name: 遠距離習得
+    type: PSV
+    desc: 弓・銃・ボウガンの射程が1増加する。
+
+  - id: thief_psv_evade
+    job: thief
+    name: 回避術
+    type: PSV
+    desc: 回避率が5%上昇する。
+
+  # ============================================================
+  # 忍者 (ninja) ※上位職
+  # ============================================================
+
+  - id: shadow_shuriken
+    job: ninja
+    name: 影手裏剣之術
+    type: CMD
+    ap: 6
+    speed: C
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 影の手裏剣。
+
+  - id: spread_shuriken
+    job: ninja
+    name: 拡散影手裏剣之術
+    type: CMD
+    ap: 14
+    speed: C
+    attr: physical
+    range_type: WIDE_FRONT
+    effect_kind: damage
+    hit_count: 1
+    desc: 広がる影の手裏剣。
+
+  - id: teleport_self_short
+    job: ninja
+    name: 瞬移之術
+    type: CMD
+    ap: 24
+    speed: C
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: teleport_self
+    desc: 短距離テレポート。
+
+  - id: teleport_self_long
+    job: ninja
+    name: 遠瞬移之術
+    type: CMD
+    ap: 50
+    speed: D
+    attr: physical
+    range_type: FORWARD_5
+    effect_kind: teleport_self
+    desc: 長距離テレポート。
+
+  - id: body_exchange
+    job: ninja
+    name: 身転換之術
+    type: CMD
+    ap: 48
+    speed: D
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: swap_positions
+    desc: 敵と位置を入れ替える。
+
+  - id: shadow_bow
+    job: ninja
+    name: 影弓之術
+    type: CMD
+    ap: 8
+    speed: D
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 影の弓矢。
+
+  - id: shadow_rage_bow
+    job: ninja
+    name: 影怒弓之術
+    type: CMD
+    ap: 18
+    speed: D
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 怒りの影の弓矢。
+
+  - id: shadow_shot
+    job: ninja
+    name: 影射之術
+    type: CMD
+    ap: 12
+    speed: D
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 影の銃撃。
+
+  - id: shadow_rapid_shot
+    job: ninja
+    name: 影連射之術
+    type: CMD
+    ap: 30
+    speed: D
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 3
+    desc: 連続する影の銃撃。
+
+  - id: heal_seal_near
+    job: ninja
+    name: 禁封癒之術
+    type: CMD
+    ap: 18
+    speed: D
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: heal_seal
+    desc: 近くの敵の回復を封じる。
+
+  - id: heal_seal_mid
+    job: ninja
+    name: 禁封癒弐之巻
+    type: CMD
+    ap: 26
+    speed: D
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: state_apply
+    state: heal_seal
+    desc: 中距離の敵の回復を封じる。
+
+  - id: heal_seal_far
+    job: ninja
+    name: 禁封癒参之巻
+    type: CMD
+    ap: 34
+    speed: D
+    attr: physical
+    range_type: FORWARD_4
+    effect_kind: state_apply
+    state: heal_seal
+    desc: 遠くの敵の回復を封じる。
+
+  - id: instant_kill
+    job: ninja
+    name: 瞬殺之術
+    type: CMD
+    ap: 60
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 一撃必殺の究極技。
+
+  - id: ninja_psv_shadow
+    job: ninja
+    name: 影移動
+    type: PSV
+    desc: 移動後に次の攻撃の命中率が上昇する。
+
+  - id: ninja_psv_dual
+    job: ninja
+    name: 二刀流
+    type: PSV
+    desc: 短剣装備時、攻撃回数が1増加する。
+
+  # ============================================================
+  # 守護魔導師 (guardian)
+  # ============================================================
+
+  - id: petit_recover
+    job: guardian
+    name: プチリカバー
+    type: CMD
+    ap: 8
+    speed: B
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: heal
+    desc: 小回復。隣接した味方を少し回復。
+
+  - id: recover
+    job: guardian
+    name: リカバー
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: heal
+    desc: 中回復。
+
+  - id: high_recover
+    job: guardian
+    name: ハイリカバー
+    type: CMD
+    ap: 26
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: heal
+    desc: 大回復。
+
+  - id: gradual
+    job: guardian
+    name: グラジュル
+    type: CMD
+    ap: 24
+    speed: E
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: heal
+    desc: 時間をかけて回復する。
+
+  - id: quick_relive
+    job: guardian
+    name: クイックリライブ
+    type: CMD
+    ap: 28
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: heal
+    desc: 戦闘不能から素早く蘇生。
+
+  - id: petit_recover_square
+    job: guardian
+    name: プチリカバースクエア
+    type: CMD
+    ap: 20
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: heal
+    desc: 範囲小回復。
+
+  - id: recover_square
+    job: guardian
+    name: リカバースクエア
+    type: CMD
+    ap: 26
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: heal
+    desc: 範囲中回復。
+
+  - id: high_recover_square
+    job: guardian
+    name: ハイリカバースクエア
+    type: CMD
+    ap: 32
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: heal
+    desc: 範囲大回復。
+
+  - id: reserve_relive
+    job: guardian
+    name: リザーブリライブ
+    type: CMD
+    ap: 60
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: heal
+    desc: 予備蘇生。倒れた時に自動回復。
+
+  - id: absolus
+    job: guardian
+    name: アブソルス
+    type: CMD
+    ap: 26
+    speed: C
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: state_apply
+    state: cleanse
+    desc: 状態異常を全て治療する。
+
+  - id: reflex
+    job: guardian
+    name: リフレクス
+    type: CMD
+    ap: 34
+    speed: C
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: state_apply
+    state: magic_barrier
+    desc: 魔法バリアを展開する。
+
+  - id: invalus
+    job: guardian
+    name: インヴァルス
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: state_apply
+    state: def_up
+    desc: 防御力を上昇させる。
+
+  - id: amulet
+    job: guardian
+    name: アミュレット
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: state_apply
+    state: magic_barrier
+    desc: お守りのバリアを展開。
+
+  - id: natelasa_sanctuary
+    job: guardian
+    name: ナテルアサンクチュアリ
+    type: CMD
+    ap: 70
+    speed: S
+    attr: magical
+    element: holy
+    range_type: RING_1
+    effect_kind: heal
+    desc: 聖域の加護。周囲全員を大回復。
+
+  - id: reflect
+    job: guardian
+    name: リフレクト
+    type: CMD
+    ap: 34
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: magic_barrier
+    desc: 遠くの味方に魔法バリア。
+
+  - id: invalut
+    job: guardian
+    name: インヴァルト
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: def_up
+    desc: 遠くの味方の防御力を上昇。
+
+  - id: angel_breath
+    job: guardian
+    name: エンジェルブレス
+    type: CMD
+    ap: 12
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: atk_up
+    desc: 天使の息吹で攻撃力強化。
+
+  - id: silence_spell
+    job: guardian
+    name: サイレンス
+    type: CMD
+    ap: 28
+    speed: C
+    attr: magical
+    element: holy
+    range_type: FORWARD_3
+    effect_kind: state_apply
+    state: silence
+    desc: 敵を沈黙させ魔法を封じる。
+
+  - id: holy_cross
+    job: guardian
+    name: ホーリークロス
+    type: CMD
+    ap: 5
+    speed: C
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 聖なる十字の一撃。
+
+  - id: holy
+    job: guardian
+    name: ホーリー
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 聖なる光の攻撃。
+
+  - id: holy_arrow
+    job: guardian
+    name: ホーリーアロー
+    type: CMD
+    ap: 36
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 聖なる矢。
+
+  - id: holy_spiral
+    job: guardian
+    name: ホーリースパイラル
+    type: CMD
+    ap: 48
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 聖なる螺旋攻撃。広範囲。
+
+  - id: guard_ascent
+    job: guardian
+    name: ガードアセント
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: state_apply
+    state: def_up
+    desc: 範囲内全員の防御を上昇。
+
+  - id: hit_ascent
+    job: guardian
+    name: ヒットアセント
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: state_apply
+    state: hit_up
+    desc: 範囲内全員の命中を上昇。
+
+  - id: speed_ascent
+    job: guardian
+    name: スピードアセント
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: state_apply
+    state: spd_up
+    desc: 範囲内全員のスピードを上昇。
+
+  - id: attack_ascent
+    job: guardian
+    name: アタックアセント
+    type: CMD
+    ap: 8
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: state_apply
+    state: atk_up
+    desc: 範囲内全員の攻撃を上昇。
+
+  - id: move_ascent
+    job: guardian
+    name: ムーブアセント
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: state_apply
+    state: mov_up
+    desc: 範囲内全員の移動力を上昇。
+
+  - id: magic_ascent
+    job: guardian
+    name: マジックアセント
+    type: CMD
+    ap: 8
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: state_apply
+    state: matk_up
+    desc: 範囲内全員の魔法攻撃を上昇。
+
+  - id: guardian_psv_heal
+    job: guardian
+    name: 回復強化
+    type: PSV
+    desc: 回復スキルの効果が10%上昇する。
+
+  - id: guardian_psv_shield
+    job: guardian
+    name: 盾術
+    type: PSV
+    desc: 盾装備時、防御力が5%上昇する。
+
+  # ============================================================
+  # 次元天導師 (dimensional_archon) ※上位職
+  # ============================================================
+
+  - id: bearing_shift
+    job: dimensional_archon
+    name: ベアリングシフト
+    type: CMD
+    ap: 12
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_1
+    effect_kind: teleport_target
+    desc: 隣接した敵をテレポートさせる。
+
+  - id: smooth_shift
+    job: dimensional_archon
+    name: スムースシフト
+    type: CMD
+    ap: 15
+    speed: C
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: teleport_target
+    desc: 滑らかに敵をテレポートさせる。
+
+  - id: long_range_shift
+    job: dimensional_archon
+    name: ロングレンジシフト
+    type: CMD
+    ap: 26
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_3
+    effect_kind: teleport_target
+    desc: 遠距離から敵をテレポートさせる。
+
+  - id: teleport_enemy
+    job: dimensional_archon
+    name: テレポート
+    type: CMD
+    ap: 42
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: teleport_target
+    desc: 敵を任意の場所へテレポート。
+
+  - id: smooth_teleport
+    job: dimensional_archon
+    name: スムーステレポート
+    type: CMD
+    ap: 50
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_3
+    effect_kind: teleport_target
+    desc: 高精度テレポート。
+
+  - id: long_range_teleport
+    job: dimensional_archon
+    name: ロングレンジテレポート
+    type: CMD
+    ap: 58
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_4
+    effect_kind: teleport_target
+    desc: 超長距離テレポート。
+
+  - id: interchange
+    job: dimensional_archon
+    name: インターチェンジ
+    type: CMD
+    ap: 42
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_3
+    effect_kind: swap_positions
+    desc: 自分と敵の位置を入れ替える。
+
+  - id: smooth_change
+    job: dimensional_archon
+    name: スムースチェンジ
+    type: CMD
+    ap: 50
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_4
+    effect_kind: swap_positions
+    desc: 高精度の位置交換。
+
+  - id: hardy_wind
+    job: dimensional_archon
+    name: ハーディウィンド
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: wind
+    range_type: FORWARD_2
+    effect_kind: push
+    push_distance: 2
+    desc: 風で敵を吹き飛ばす。
+
+  - id: hardy_hurricane
+    job: dimensional_archon
+    name: ハーディハリケーン
+    type: CMD
+    ap: 32
+    speed: D
+    attr: magical
+    element: wind
+    range_type: FORWARD_3
+    effect_kind: push
+    push_distance: 3
+    desc: 嵐で敵を吹き飛ばす。
+
+  - id: hardy_typhoon
+    job: dimensional_archon
+    name: ハーディタイフーン
+    type: CMD
+    ap: 40
+    speed: D
+    attr: magical
+    element: wind
+    range_type: DIAMOND_2
+    effect_kind: push
+    push_distance: 3
+    desc: 台風で広範囲を吹き飛ばす。
+
+  - id: warp_secure
+    job: dimensional_archon
+    name: ワープセキュアー
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: def_up
+    desc: 次元の力で防御力を上昇。
+
+  - id: dim_recover
+    job: dimensional_archon
+    name: ディムリカバー
+    type: CMD
+    ap: 30
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_2
+    effect_kind: heal
+    desc: 次元の力で回復する。
+
+  - id: homing_call
+    job: dimensional_archon
+    name: ホーミングコール
+    type: CMD
+    ap: 36
+    speed: D
+    attr: magical
+    element: holy
+    range_type: FORWARD_3
+    effect_kind: teleport_target
+    desc: 敵を自分の目の前に呼び寄せる。
+
+  - id: babel_trans
+    job: dimensional_archon
+    name: バベーストランス
+    type: CMD
+    ap: 48
+    speed: D
+    attr: magical
+    element: holy
+    range_type: DIAMOND_2
+    effect_kind: teleport_target
+    desc: 複数の敵をランダムにテレポート。
+
+  - id: dim_archon_psv
+    job: dimensional_archon
+    name: 次元掌握
+    type: PSV
+    desc: テレポート系スキルのAP消費が10%減少する。
+
+  # ============================================================
+  # 精霊魔導師 (spirit)
+  # ============================================================
+
+  - id: fireball
+    job: spirit
+    name: ファイアボール
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 炎の球。基本の炎魔法。
+
+  - id: fire_shoot
+    job: spirit
+    name: ファイアシュート
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 炎の射撃。
+
+  - id: lil_bomb
+    job: spirit
+    name: リルボム
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    area: RING_1
+    desc: 小爆発。周囲に炎ダメージ。
+
+  - id: heat_touch
+    job: spirit
+    name: ヒートタッチ
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    state: burn
+    desc: 熱の触れ。燃焼状態にする。
+
+  - id: grand_flame
+    job: spirit
+    name: グランドフレイム
+    type: CMD
+    ap: 34
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    area: RING_1
+    desc: 大炎。広範囲の炎攻撃。
+
+  - id: flame_poll
+    job: spirit
+    name: フレイムポール
+    type: CMD
+    ap: 42
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    area: RING_1
+    desc: 炎の柱。超広範囲の炎攻撃。
+
+  - id: self_burning
+    job: spirit
+    name: セルフバーニング
+    type: CMD
+    ap: 14
+    speed: C
+    attr: magical
+    element: fire
+    range_type: SELF
+    effect_kind: state_apply
+    state: atk_up
+    desc: 自身に炎を纏い攻撃力上昇。
+
+  - id: ex_bomb
+    job: spirit
+    name: エクスボム
+    type: CMD
+    ap: 36
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    area: DIAMOND_2
+    desc: 大爆発。広範囲の炎爆発。
+
+  - id: magma
+    job: spirit
+    name: マグマ
+    type: CMD
+    ap: 70
+    speed: F
+    attr: magical
+    element: fire
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    area: DIAMOND_2
+    desc: 溶岩の噴出。超威力の炎魔法。
+
+  - id: wind_edge
+    job: spirit
+    name: ウィンドエッジ
+    type: CMD
+    ap: 6
+    speed: C
+    attr: magical
+    element: wind
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 風の刃。基本の風魔法。
+
+  - id: vacuum
+    job: spirit
+    name: バキューム
+    type: CMD
+    ap: 32
+    speed: D
+    attr: magical
+    element: wind
+    range_type: DIAMOND_2
+    effect_kind: push
+    push_distance: 2
+    desc: 真空で敵を吹き飛ばす。
+
+  - id: amazing_wind
+    job: spirit
+    name: アメージングウィンド
+    type: CMD
+    ap: 34
+    speed: D
+    attr: magical
+    element: wind
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 驚異の風魔法。
+
+  - id: hurricane_spirit
+    job: spirit
+    name: ハリケーン
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: wind
+    range_type: FORWARD_2
+    effect_kind: push
+    push_distance: 1
+    desc: 小竜巻。
+
+  - id: double_hurricane
+    job: spirit
+    name: ダブルハリケーン
+    type: CMD
+    ap: 30
+    speed: D
+    attr: magical
+    element: wind
+    range_type: FORWARD_3
+    effect_kind: push
+    push_distance: 2
+    desc: 二連竜巻。
+
+  - id: triple_hurricane
+    job: spirit
+    name: トリプルハリケーン
+    type: CMD
+    ap: 40
+    speed: D
+    attr: magical
+    element: wind
+    range_type: FORWARD_4
+    effect_kind: push
+    push_distance: 3
+    desc: 三連竜巻。超広範囲。
+
+  - id: aqua_ball
+    job: spirit
+    name: アクアボール
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: water
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 水の球。基本の水魔法。
+
+  - id: ice_missile
+    job: spirit
+    name: アイスミサイル
+    type: CMD
+    ap: 28
+    speed: D
+    attr: magical
+    element: water
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 氷のミサイル。
+
+  - id: water_line
+    job: spirit
+    name: ウォーターライン
+    type: CMD
+    ap: 34
+    speed: D
+    attr: magical
+    element: water
+    range_type: FORWARD_1_5
+    effect_kind: damage
+    hit_count: 1
+    desc: 水の直線攻撃。貫通する。
+
+  - id: diamond_dust
+    job: spirit
+    name: ダイヤモンドダスト
+    type: CMD
+    ap: 63
+    speed: E
+    attr: magical
+    element: water
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    state: immobilize
+    desc: 氷の粉塵。広範囲かつ凍結。
+
+  - id: absolute_zero
+    job: spirit
+    name: 絶対零度
+    type: CMD
+    ap: 75
+    speed: F
+    attr: magical
+    element: water
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    state: stone
+    desc: 絶対零度。広範囲石化攻撃。
+
+  - id: mud_hand
+    job: spirit
+    name: マドハンド
+    type: CMD
+    ap: 8
+    speed: D
+    attr: magical
+    element: earth
+    range_type: FORWARD_1
+    effect_kind: state_apply
+    state: immobilize
+    desc: 泥の手で敵を動けなくする。
+
+  - id: rock_missile
+    job: spirit
+    name: ロックミサイル
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    element: earth
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 岩のミサイル。
+
+  - id: rock_lance
+    job: spirit
+    name: ロックランス
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: earth
+    range_type: FORWARD_4
+    effect_kind: damage
+    hit_count: 1
+    desc: 岩の槍。長射程。
+
+  - id: fall_stone
+    job: spirit
+    name: フォールストーン
+    type: CMD
+    ap: 28
+    speed: D
+    attr: magical
+    element: earth
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 落石。広範囲の地属性攻撃。
+
+  - id: petit_meteor
+    job: spirit
+    name: プチメテオ
+    type: CMD
+    ap: 36
+    speed: E
+    attr: magical
+    element: earth
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    area: RING_1
+    desc: 小隕石。広範囲の地属性攻撃。
+
+  - id: earthquake
+    job: spirit
+    name: アースクエイク
+    type: CMD
+    ap: 48
+    speed: D
+    attr: magical
+    element: earth
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 地震。広範囲の地属性攻撃。
+
+  - id: meteor
+    job: spirit
+    name: メテオ
+    type: CMD
+    ap: 65
+    speed: F
+    attr: magical
+    element: earth
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 隕石落下。超威力の地属性攻撃。
+
+  - id: meteor_rush
+    job: spirit
+    name: メテオラッシュ
+    type: CMD
+    ap: 88
+    speed: F
+    attr: magical
+    element: earth
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 3
+    desc: 連続隕石落下。最大の地属性攻撃。
+
+  - id: spark_ball
+    job: spirit
+    name: スパークボール
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    element: thunder
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 電球。基本の雷魔法。
+
+  - id: thunder_impact
+    job: spirit
+    name: サンダーインパクト
+    type: CMD
+    ap: 90
+    speed: D
+    attr: magical
+    element: thunder
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 雷の衝撃。最強の雷魔法。
+
+  - id: thunderbolt
+    job: spirit
+    name: サンダーボルト
+    type: CMD
+    ap: 45
+    speed: D
+    attr: magical
+    element: thunder
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 雷撃。強力な雷魔法。
+
+  - id: leaf_blade
+    job: spirit
+    name: リーフブレード
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: plant
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 葉の刃。
+
+  - id: bind_ivy
+    job: spirit
+    name: バインドアイビー
+    type: CMD
+    ap: 38
+    speed: D
+    attr: magical
+    element: plant
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: immobilize
+    desc: 蔦で敵を縛り動けなくする。
+
+  - id: green_green
+    job: spirit
+    name: グリーングリーン
+    type: CMD
+    ap: 34
+    speed: D
+    attr: magical
+    element: plant
+    range_type: DIAMOND_2
+    effect_kind: heal
+    desc: 緑の力で範囲回復。
+
+  - id: spirit_psv_elem
+    job: spirit
+    name: 属性強化
+    type: PSV
+    desc: 属性魔法の威力が5%上昇する。
+
+  - id: spirit_psv_range
+    job: spirit
+    name: 魔法射程延長
+    type: PSV
+    desc: 魔法スキルの射程が1増加する。
+
+  # ============================================================
+  # 召喚天導師 (summoning_celestial_guide) ※上位職
+  # ============================================================
+
+  - id: summon_fighter1
+    job: summoning_celestial_guide
+    name: ファイター★
+    type: CMD
+    ap: 12
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_fighter_1
+    desc: ファイター★を召喚する。
+
+  - id: summon_fighter2
+    job: summoning_celestial_guide
+    name: ファイター★★
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_fighter_2
+    desc: ファイター★★を召喚する。
+
+  - id: summon_fighter3
+    job: summoning_celestial_guide
+    name: ファイター★★★
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_fighter_3
+    desc: ファイター★★★を召喚する。
+
+  - id: summon_bomber1
+    job: summoning_celestial_guide
+    name: ボンバー★
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_bomber_1
+    desc: ボンバー★を召喚する。爆発攻撃型。
+
+  - id: summon_bomber2
+    job: summoning_celestial_guide
+    name: ボンバー★★
+    type: CMD
+    ap: 22
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_bomber_2
+    desc: ボンバー★★を召喚する。
+
+  - id: summon_bomber3
+    job: summoning_celestial_guide
+    name: ボンバー★★★
+    type: CMD
+    ap: 28
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_bomber_3
+    desc: ボンバー★★★を召喚する。
+
+  - id: summon_attacker1
+    job: summoning_celestial_guide
+    name: アタッカー★
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_attacker_1
+    desc: アタッカー★を召喚する。遠距離攻撃型。
+
+  - id: summon_attacker2
+    job: summoning_celestial_guide
+    name: アタッカー★★
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_attacker_2
+    desc: アタッカー★★を召喚する。
+
+  - id: summon_attacker3
+    job: summoning_celestial_guide
+    name: アタッカー★★★
+    type: CMD
+    ap: 22
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_attacker_3
+    desc: アタッカー★★★を召喚する。
+
+  - id: summon_tank1
+    job: summoning_celestial_guide
+    name: タンク★
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_tank_1
+    desc: タンク★を召喚する。防御型。
+
+  - id: summon_tank2
+    job: summoning_celestial_guide
+    name: タンク★★
+    type: CMD
+    ap: 22
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_tank_2
+    desc: タンク★★を召喚する。
+
+  - id: summon_tank3
+    job: summoning_celestial_guide
+    name: タンク★★★
+    type: CMD
+    ap: 28
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_tank_3
+    desc: タンク★★★を召喚する。
+
+  - id: summon_medical1
+    job: summoning_celestial_guide
+    name: メディカル★
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_medical_1
+    desc: メディカル★を召喚する。回復型。
+
+  - id: summon_medical2
+    job: summoning_celestial_guide
+    name: メディカル★★
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_medical_2
+    desc: メディカル★★を召喚する。
+
+  - id: summon_medical3
+    job: summoning_celestial_guide
+    name: メディカル★★★
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_medical_3
+    desc: メディカル★★★を召喚する。
+
+  - id: summon_stealth1
+    job: summoning_celestial_guide
+    name: ステルス★
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_stealth_1
+    desc: ステルス★を召喚する。不可視型。
+
+  - id: summon_stealth2
+    job: summoning_celestial_guide
+    name: ステルス★★
+    type: CMD
+    ap: 20
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_stealth_2
+    desc: ステルス★★を召喚する。
+
+  - id: black_mariah1
+    job: summoning_celestial_guide
+    name: ブラックマライヤ★
+    type: CMD
+    ap: 30
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_black_mariah_1
+    desc: ブラックマライヤ★を召喚する。強力な魔法攻撃型。
+
+  - id: black_mariah2
+    job: summoning_celestial_guide
+    name: ブラックマライヤ★★
+    type: CMD
+    ap: 40
+    speed: D
+    attr: magical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: summon_black_mariah_2
+    desc: ブラックマライヤ★★を召喚する。
+
+  - id: summon_psv_count
+    job: summoning_celestial_guide
+    name: 召喚拡張
+    type: PSV
+    desc: 同時召喚可能数が1増加する。
+
+  - id: summon_psv_hp
+    job: summoning_celestial_guide
+    name: 召喚強化
+    type: PSV
+    desc: 召喚ユニットのHPが10%上昇する。
+
+  # ============================================================
+  # 黒印魔導師 (black)
+  # ============================================================
+
+  - id: little_plosion
+    job: black
+    name: リトルプロージョン
+    type: CMD
+    ap: 2
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    desc: 小爆発。最小コストの攻撃魔法。
+
+  - id: petit_mine
+    job: black
+    name: プチマイン
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: mine_small
+    desc: 小地雷を設置する。
+
+  - id: spring_trap
+    job: black
+    name: スプリング
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: spring_trap
+    desc: バネ罠を設置する。踏んだ敵を飛ばす。
+
+  - id: death_claw
+    job: black
+    name: デスクロー
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_1
+    effect_kind: damage
+    hit_count: 1
+    state: poison
+    desc: 死の爪。毒を付与する。
+
+  - id: hells_chain
+    job: black
+    name: ヘルズチェイン
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: immobilize
+    desc: 地獄の鎖。敵を動けなくする。
+
+  - id: sticky_net
+    job: black
+    name: スティッキーネット
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: sticky_net
+    desc: 粘着ネットを設置する。
+
+  - id: tarai
+    job: black
+    name: タライ
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: tarai_trap
+    desc: タライ罠を設置する。
+
+  - id: sticky_zone
+    job: black
+    name: スティッキーゾーン
+    type: CMD
+    ap: 26
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: sticky_zone
+    area: RING_1
+    desc: 広範囲に粘着ゾーンを展開。
+
+  - id: sleep_gas
+    job: black
+    name: スリープガス
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: sleep_gas_trap
+    desc: 眠りガスの罠を設置する。
+
+  - id: flame_mine
+    job: black
+    name: フレイムマイン
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: mine_fire
+    desc: 炎地雷を設置する。
+
+  - id: ice_mine
+    job: black
+    name: アイスマイン
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: water
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: mine_ice
+    desc: 氷地雷を設置する。
+
+  - id: spark_mine
+    job: black
+    name: スパークマイン
+    type: CMD
+    ap: 6
+    speed: D
+    attr: magical
+    element: thunder
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: mine_thunder
+    desc: 雷地雷を設置する。
+
+  - id: delicate_mine
+    job: black
+    name: デリケートマイン
+    type: CMD
+    ap: 10
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: mine_delicate
+    desc: 精密地雷。威力が高い。
+
+  - id: double_delicate_mine
+    job: black
+    name: ダブルデリケートマイン
+    type: CMD
+    ap: 16
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: mine_delicate_double
+    desc: 二重精密地雷。
+
+  - id: triple_delicate_mine
+    job: black
+    name: トリプルデリケートマイン
+    type: CMD
+    ap: 22
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: mine_delicate_triple
+    desc: 三重精密地雷。
+
+  - id: curse_slip
+    job: black
+    name: カーズスリップ
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: poison
+    desc: 呪いの毒。持続ダメージを与える。
+
+  - id: oil_shock
+    job: black
+    name: オイルショック
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: oil_zone
+    desc: 油ゾーン設置。炎との組み合わせで爆発。
+
+  - id: gravity
+    job: black
+    name: グラビティー
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: immobilize
+    desc: 重力で敵を押さえつける。
+
+  - id: fade_gas
+    job: black
+    name: フェードガス
+    type: CMD
+    ap: 10
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: fade_gas_trap
+    desc: 視界を奪うガスの罠。
+
+  - id: poison_gas
+    job: black
+    name: ポイズンガス
+    type: CMD
+    ap: 12
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: place_object
+    object_type: poison_gas_trap
+    desc: 毒ガスの罠。
+
+  - id: death_cross
+    job: black
+    name: デスクロス
+    type: CMD
+    ap: 28
+    speed: D
+    attr: magical
+    element: dark
+    range_type: CROSS_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 十字型の闇属性攻撃。
+
+  - id: death_gingham
+    job: black
+    name: デスギンガム
+    type: CMD
+    ap: 34
+    speed: D
+    attr: magical
+    element: dark
+    range_type: DIAMOND_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 広範囲の闇属性攻撃。
+
+  - id: singen
+    job: black
+    name: シンゲン
+    type: CMD
+    ap: 40
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 焼き付け。強力な闇魔法。
+
+  - id: bomber_death
+    job: black
+    name: ボンバーデス
+    type: CMD
+    ap: 50
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    area: RING_1
+    desc: 死の爆発。超威力の闇爆発。
+
+  - id: fake_spell
+    job: black
+    name: フェイクスペル
+    type: CMD
+    ap: 20
+    speed: C
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: blind
+    desc: 幻の魔法で目くらまし。
+
+  - id: circle_generate
+    job: black
+    name: サークルジェネレイト
+    type: CMD
+    ap: 36
+    speed: D
+    attr: magical
+    element: dark
+    range_type: SELF
+    effect_kind: place_object
+    object_type: magic_circle
+    area: RING_1
+    desc: 魔法陣を展開する。
+
+  - id: invisible
+    job: black
+    name: インビジィブル
+    type: CMD
+    ap: 18
+    speed: C
+    attr: magical
+    element: dark
+    range_type: SELF
+    effect_kind: state_apply
+    state: invisible
+    desc: 透明化して姿を消す。
+
+  - id: remote_spring
+    job: black
+    name: リモートスプリング
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_4
+    effect_kind: place_object
+    object_type: spring_trap
+    desc: 遠距離にバネ罠を設置。
+
+  - id: remote_flame_mine
+    job: black
+    name: リモートフレイムマイン
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: fire
+    range_type: FORWARD_4
+    effect_kind: place_object
+    object_type: mine_fire
+    desc: 遠距離に炎地雷を設置。
+
+  - id: remote_ice_mine
+    job: black
+    name: リモートアイスマイン
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: water
+    range_type: FORWARD_4
+    effect_kind: place_object
+    object_type: mine_ice
+    desc: 遠距離に氷地雷を設置。
+
+  - id: remote_spark_mine
+    job: black
+    name: リモートスパークマイン
+    type: CMD
+    ap: 14
+    speed: D
+    attr: magical
+    element: thunder
+    range_type: FORWARD_4
+    effect_kind: place_object
+    object_type: mine_thunder
+    desc: 遠距離に雷地雷を設置。
+
+  - id: dark_fireball
+    job: black
+    name: ダークファイアボール
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: 闇の炎球。
+
+  - id: dark_hurricane
+    job: black
+    name: ダークハリケーン
+    type: CMD
+    ap: 28
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_3
+    effect_kind: push
+    push_distance: 2
+    desc: 闇の竜巻。
+
+  - id: garry
+    job: black
+    name: ガリィー
+    type: CMD
+    ap: 32
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    state: atk_down
+    desc: 攻撃力を下げる闇魔法。
+
+  - id: lie_down
+    job: black
+    name: ライダウン
+    type: CMD
+    ap: 22
+    speed: C
+    attr: magical
+    element: dark
+    range_type: FORWARD_2
+    effect_kind: state_apply
+    state: immobilize
+    desc: 敵を倒れ込ませる。
+
+  - id: black_psv_trap
+    job: black
+    name: 罠強化
+    type: PSV
+    desc: 設置した罠のダメージが10%上昇する。
+
+  - id: black_psv_dark
+    job: black
+    name: 闇魔法強化
+    type: PSV
+    desc: 闇属性魔法の威力が5%上昇する。
+
+  # ============================================================
+  # 錬金天導師 (alchemic_grand_sage) ※上位職
+  # ============================================================
+
+  - id: wooden_case
+    job: alchemic_grand_sage
+    name: ウッドゥンケース
+    type: CMD
+    ap: 4
+    speed: C
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: wooden_case
+    desc: 小さな木製ケースを設置する。
+
+  - id: wooden_box
+    job: alchemic_grand_sage
+    name: ウッドゥンボックス
+    type: CMD
+    ap: 6
+    speed: B
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: wooden_box
+    desc: 木製ボックスを設置する。
+
+  - id: wooden_carton
+    job: alchemic_grand_sage
+    name: ウッドゥンカートン
+    type: CMD
+    ap: 8
+    speed: A
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: wooden_carton
+    desc: 大きな木製カートンを設置する。
+
+  - id: pole
+    job: alchemic_grand_sage
+    name: ポール
+    type: CMD
+    ap: 12
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: pole
+    desc: ポールを設置する。
+
+  - id: stella
+    job: alchemic_grand_sage
+    name: ステラ
+    type: CMD
+    ap: 12
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: stella
+    desc: ステラを設置する。
+
+  - id: monolith
+    job: alchemic_grand_sage
+    name: モノリス
+    type: CMD
+    ap: 12
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: monolith
+    desc: モノリスを設置する。高い遮蔽物。
+
+  - id: iron_case
+    job: alchemic_grand_sage
+    name: アイアンケース
+    type: CMD
+    ap: 8
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: iron_case
+    desc: 鉄製ケースを設置する。
+
+  - id: iron_box
+    job: alchemic_grand_sage
+    name: アイアンボックス
+    type: CMD
+    ap: 10
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: iron_box
+    desc: 鉄製ボックスを設置する。
+
+  - id: iron_carton
+    job: alchemic_grand_sage
+    name: アイアンカートン
+    type: CMD
+    ap: 12
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: iron_carton
+    desc: 大きな鉄製カートンを設置する。
+
+  - id: danger_article
+    job: alchemic_grand_sage
+    name: デンジャーアーティクル
+    type: CMD
+    ap: 12
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: danger_article
+    desc: 危険物を設置する。踏むと爆発。
+
+  - id: danger_object
+    job: alchemic_grand_sage
+    name: デンジャーオブジェクト
+    type: CMD
+    ap: 18
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: danger_object
+    desc: 危険オブジェクトを設置する。
+
+  - id: danger_material
+    job: alchemic_grand_sage
+    name: デンジャーマテリアル
+    type: CMD
+    ap: 24
+    speed: D
+    attr: magical
+    element: dark
+    range_type: FORWARD_1
+    effect_kind: place_object
+    object_type: danger_material
+    desc: 危険素材を設置する。最大威力の爆発。
+
+  - id: wooden_man
+    job: alchemic_grand_sage
+    name: ウッドゥンマン
+    type: CMD
+    ap: 14
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: wooden_man
+    desc: 木製人形を召喚する。基本デコイ。
+
+  - id: wooden_person
+    job: alchemic_grand_sage
+    name: ウッドゥンパーソン
+    type: CMD
+    ap: 20
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: wooden_person
+    desc: 木製人形(中型)を召喚する。
+
+  - id: wooden_people
+    job: alchemic_grand_sage
+    name: ウッドゥンピープル
+    type: CMD
+    ap: 28
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: wooden_people
+    desc: 木製人形(大型)を召喚する。
+
+  - id: iron_ball
+    job: alchemic_grand_sage
+    name: アイアンボール
+    type: CMD
+    ap: 14
+    speed: D
+    attr: physical
+    range_type: FORWARD_2
+    effect_kind: damage
+    hit_count: 1
+    desc: 鉄球を転がす。
+
+  - id: iron_ball_spine
+    job: alchemic_grand_sage
+    name: アイアンボールスパイン
+    type: CMD
+    ap: 20
+    speed: D
+    attr: physical
+    range_type: FORWARD_3
+    effect_kind: damage
+    hit_count: 1
+    desc: トゲ付き鉄球を転がす。
+
+  - id: iron_man
+    job: alchemic_grand_sage
+    name: アイアンマン
+    type: CMD
+    ap: 24
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: iron_man
+    desc: 鉄製人形を召喚する。高耐久デコイ。
+
+  - id: iron_person
+    job: alchemic_grand_sage
+    name: アイアンパーソン
+    type: CMD
+    ap: 32
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: iron_person
+    desc: 鉄製人形(中型)を召喚する。
+
+  - id: iron_people
+    job: alchemic_grand_sage
+    name: アイアンピープル
+    type: CMD
+    ap: 42
+    speed: D
+    attr: physical
+    range_type: FORWARD_1
+    effect_kind: summon
+    summon_id: iron_people
+    desc: 鉄製人形(大型)を召喚する。最強のデコイ。
+
+  - id: alchemic_psv_object
+    job: alchemic_grand_sage
+    name: 錬成術
+    type: PSV
+    desc: 設置物のHPが15%上昇する。
+
+  - id: alchemic_psv_summon
+    job: alchemic_grand_sage
+    name: 人形術
+    type: PSV
+    desc: 召喚人形の攻撃力が10%上昇する。
