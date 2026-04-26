@@ -805,7 +805,6 @@ const SKILL_DEFS = {
     effects: [{ kind: 'summon', summon_type: 'iron_ball', duration: 6 }],
     desc: '転がりながら敵を押す鉄球を錬金(6T)',
   },
-};
 
   // ---- 戦士 (追加スキル) ----
   swallow_cut: {
@@ -1478,6 +1477,7 @@ const SKILL_DEFS = {
     effects: [{ kind: 'place_object', obj_type: 'mine', hp: 1, damage_on_contact: 80 }],
     desc: '踏むと爆発する地雷を設置',
   },
+};
 
 // ===== JOB DEFINITIONS =====
 const JOB_DEFS = {
