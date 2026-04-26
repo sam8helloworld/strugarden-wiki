@@ -129,14 +129,20 @@ const G = {
 
       setPhase(`ターン ${this.state.turn}`, '移動フェイズ');
 
-      // Collect movement paths
-      const paths = await this.collectAllPaths();
+      // Collect movement paths + chosen facings
+      const { paths, facings } = await this.collectAllPaths();
+
+      // Apply facings before animation so units face the right way during render
+      for (const [uid, f] of Object.entries(facings)) {
+        const u = this.state.units.find(u => u.id === uid);
+        if (u) u.facing = f;
+      }
 
       // Animate simultaneous movement
       await animateMoves(this.state, paths, st => renderGrid(st));
 
-      // Resolve
-      const moveEvs = processMovement(this.state, paths);
+      // Resolve (facings already applied to units above; pass empty to not override)
+      const moveEvs = processMovement(this.state, paths, facings);
       logEvents(moveEvs);
       updateHUD(this.state);
       renderGrid(this.state);
@@ -165,31 +171,74 @@ const G = {
   // ── Movement collection ──
   async collectAllPaths() {
     const paths = {};
+    const facings = {};
     if (this.mode === 'ai') {
       const aiUnit = this.state.units.find(u => u.teamId === 1);
       if (aiUnit && !aiUnit.ko) {
         const dest = AI.decideMove(this.state, aiUnit);
         if (dest) {
-          const { getPath } = bfsMovement(aiUnit.pos, aiUnit, this.state.units, aiUnit.movement);
-          paths[aiUnit.id] = getPath(dest[0], dest[1]);
+          const { getPath } = bfsMovement(aiUnit.pos, aiUnit, this.state.units, aiUnit.movement, this.state.placedObjects, this.state.map);
+          const path = getPath(dest[0], dest[1]);
+          paths[aiUnit.id] = path;
+          // AI faces toward the enemy after moving
+          if (path.length >= 2) {
+            const last = path[path.length - 1];
+            const prev = path[path.length - 2];
+            facings[aiUnit.id] = directionBetween(prev[0], prev[1], last[0], last[1]);
+          }
         } else {
           paths[aiUnit.id] = [];
         }
       }
-      paths['p1'] = await this.playerPathInput('p1');
+      const r1 = await this.playerPathInput('p1');
+      paths['p1'] = r1.path;
+      facings['p1'] = r1.facing;
     } else {
-      paths['p1'] = await this.playerPathInput('p1');
+      const r1 = await this.playerPathInput('p1');
+      paths['p1'] = r1.path;
+      facings['p1'] = r1.facing;
       await this.passScreen('プレイヤー2の移動フェイズ', 'P2の移動先を選択してください');
-      paths['p2'] = await this.playerPathInput('p2');
+      const r2 = await this.playerPathInput('p2');
+      paths['p2'] = r2.path;
+      facings['p2'] = r2.facing;
     }
-    return paths;
+    return { paths, facings };
+  },
+
+  // Show a 4-direction facing picker at the given unit's destination and resolve with chosen facing
+  showFacingPicker(unit, destPos) {
+    return new Promise(resolve => {
+      const [dx, dy] = destPos;
+      setTitle(`<strong>向きを選択</strong>`);
+      setHint('移動後の向きを選んでください');
+      clearBtns();
+
+      const currentFacing = unit.facing;
+      const fg = document.createElement('div');
+      fg.className = 'facing-grp';
+      for (const [f, a] of [['up','↑'],['down','↓'],['left','←'],['right','→']]) {
+        const b = document.createElement('button');
+        b.className = `abtn fbtn${f === currentFacing ? ' on' : ''}`;
+        b.textContent = a;
+        b.addEventListener('click', () => {
+          onCellClick = () => {};
+          clearBtns();
+          resolve(f);
+        });
+        fg.appendChild(b);
+      }
+      document.getElementById('act-btns').appendChild(fg);
+
+      // Highlight the destination cell
+      renderGrid(this.state, { selUnit: { ...unit, pos: destPos } });
+    });
   },
 
   playerPathInput(pid) {
     return new Promise(resolve => {
       const unit = this.state.units.find(u => u.id === pid);
       if (!unit || unit.ko || hasState(unit, 'sleep') || hasState(unit, 'freeze')) {
-        resolve([]);
+        resolve({ path: [], facing: unit ? unit.facing : 'up' });
         return;
       }
 
@@ -199,7 +248,7 @@ const G = {
       setHint('移動先をクリック — 続けてクリックで経由地追加');
 
       let session = { currentPos: [...unit.pos], remaining: unit.movement, fullPath: [] };
-      let bfsCache = bfsMovement(session.currentPos, unit, this.state.units, session.remaining);
+      let bfsCache = bfsMovement(session.currentPos, unit, this.state.units, session.remaining, this.state.placedObjects, this.state.map);
 
       const refresh = () => {
         setBudget(`移動力残: ${session.remaining}/${unit.movement}`);
@@ -210,18 +259,21 @@ const G = {
         });
       };
 
-      const commit = () => {
+      const commitWithFacing = async () => {
         onCellClick = () => {};
         onCellHover = () => {};
         clearBtns();
         setBudget('');
+        // Show facing picker at destination
+        const destPos = session.fullPath.length > 0 ? session.fullPath[session.fullPath.length - 1] : [...unit.pos];
+        const facing = await this.showFacingPicker(unit, destPos);
         markActiveHUD('');
-        resolve(session.fullPath);
+        resolve({ path: session.fullPath, facing });
       };
 
       clearBtns();
-      addBtn('その場待機', () => commit());
-      addBtn('移動完了', () => commit(), 'primary');
+      addBtn('その場待機', () => commitWithFacing());
+      addBtn('移動完了', () => commitWithFacing(), 'primary');
 
       onCellHover = (x, y) => {
         const inRange = bfsCache.reachable.some(([rx, ry]) => rx === x && ry === y);
@@ -236,18 +288,18 @@ const G = {
       };
 
       onCellClick = (x, y) => {
-        if (x === session.currentPos[0] && y === session.currentPos[1]) { commit(); return; }
+        if (x === session.currentPos[0] && y === session.currentPos[1]) { commitWithFacing(); return; }
         const inRange = bfsCache.reachable.some(([rx, ry]) => rx === x && ry === y);
         if (!inRange) return;
         const seg = bfsCache.getPath(x, y);
         session.fullPath = [...session.fullPath, ...seg];
         session.currentPos = [x, y];
         session.remaining = unit.movement - session.fullPath.length;
-        if (session.remaining <= 0) { commit(); return; }
-        bfsCache = bfsMovement(session.currentPos, unit, this.state.units, session.remaining);
+        if (session.remaining <= 0) { commitWithFacing(); return; }
+        bfsCache = bfsMovement(session.currentPos, unit, this.state.units, session.remaining, this.state.placedObjects, this.state.map);
         clearBtns();
-        addBtn('その場待機', () => commit());
-        addBtn('移動完了', () => commit(), 'primary');
+        addBtn('その場待機', () => commitWithFacing());
+        addBtn('移動完了', () => commitWithFacing(), 'primary');
         refresh();
       };
 
@@ -287,23 +339,6 @@ const G = {
       setHint('スキルを選ぶか待機');
       setBudget('');
       clearBtns();
-
-      // Facing buttons
-      const fg = document.createElement('div');
-      fg.className = 'facing-grp';
-      for (const [f, a] of [['up','↑'],['down','↓'],['left','←'],['right','→']]) {
-        const b = document.createElement('button');
-        b.className = `abtn fbtn${unit.facing === f ? ' on' : ''}`;
-        b.textContent = a;
-        b.addEventListener('click', () => {
-          unit.facing = f;
-          fg.querySelectorAll('.fbtn').forEach(x => x.classList.remove('on'));
-          b.classList.add('on');
-          if (this.selectedSkill) this.refreshAtkRange(unit);
-        });
-        fg.appendChild(b);
-      }
-      document.getElementById('act-btns').appendChild(fg);
 
       // Skill buttons
       for (const sid of unit.deck) {
@@ -459,12 +494,33 @@ function markActiveHUD(uid) {
   document.querySelectorAll('.u-hud').forEach(el => el.classList.toggle('active', el.dataset.uid === uid));
 }
 
+// Placed-object type display info
+const OBJ_DISPLAY = {
+  wood_box_fragile: { emoji: '📦', color: '#a06020', label: '木箱(脆)' },
+  wood_box:         { emoji: '📦', color: '#c07020', label: '木箱' },
+  wood_carton:      { emoji: '📦', color: '#c08030', label: '木カートン' },
+  iron_box:         { emoji: '🗳️', color: '#808090', label: '鉄箱' },
+  iron_box_med:     { emoji: '🗳️', color: '#9090a0', label: '鉄箱(中)' },
+  pole:             { emoji: '🪨', color: '#707070', label: '柱' },
+  danger_item:      { emoji: '⚠️', color: '#ff4020', label: '危険物' },
+  stella:           { emoji: '⭐', color: '#ffd700', label: 'ステラ' },
+  monolith:         { emoji: '🗿', color: '#505060', label: 'モノリス' },
+  mine:             { emoji: '💣', color: '#d03020', label: '地雷' },
+  wood_man:         { emoji: '🪆', color: '#b06020', label: '木人形' },
+  iron_ball:        { emoji: '⚫', color: '#606070', label: '鉄球' },
+};
+
 // ===== GRID RENDERER =====
 function renderGrid(st, opts = {}) {
   const { moveRange = [], planPath = [], prevPath = [], atkRange = [], aoeRange = [], selUnit = null } = opts;
 
+  const mapDef = (st && st.map) || MAP_DEF;
+  const mapHeights = mapDef.heights;
+  const obsSet = new Set((mapDef.obstacles || []).map(([ox, oy]) => `${ox},${oy}`));
+  const placedObjects = (st && st.placedObjects) || [];
+
   const grid = document.getElementById('grid-cells');
-  grid.style.gridTemplateColumns = `repeat(${MAP_DEF.width}, 56px)`;
+  grid.style.gridTemplateColumns = `repeat(${mapDef.width}, 56px)`;
 
   const moveSet  = new Set(moveRange.map(([x,y]) => `${x},${y}`));
   const planSet  = new Set(planPath.map(([x,y]) => `${x},${y}`));
@@ -472,10 +528,10 @@ function renderGrid(st, opts = {}) {
   const atkSet   = new Set(atkRange.map(([x,y]) => `${x},${y}`));
   const aoeSet   = new Set(aoeRange.map(([x,y]) => `${x},${y}`));
 
-  if (grid.children.length !== MAP_DEF.width * MAP_DEF.height) {
+  if (grid.children.length !== mapDef.width * mapDef.height) {
     grid.innerHTML = '';
-    for (let row = 0; row < MAP_DEF.height; row++) {
-      for (let col = 0; col < MAP_DEF.width; col++) {
+    for (let row = 0; row < mapDef.height; row++) {
+      for (let col = 0; col < mapDef.width; col++) {
         const c = document.createElement('div');
         c.className = 'cell';
         c.dataset.x = col;
@@ -490,17 +546,31 @@ function renderGrid(st, opts = {}) {
   for (const cell of grid.children) {
     const x = +cell.dataset.x, y = +cell.dataset.y;
     const key = `${x},${y}`;
-    const h = MAP_HEIGHTS[y][x];
+    const h = mapHeights[y][x];
+    const isObstacle = obsSet.has(key);
 
-    cell.className = `cell h${h}`;
-    if      (aoeSet.has(key))  cell.classList.add('aoe');
-    else if (atkSet.has(key))  cell.classList.add('atk');
-    else if (planSet.has(key)) cell.classList.add('path-plan');
-    else if (prevSet.has(key)) cell.classList.add('path-prev');
-    else if (moveSet.has(key)) cell.classList.add('mv');
+    if (isObstacle) {
+      cell.className = 'cell obstacle';
+    } else {
+      cell.className = `cell h${h}`;
+      if      (aoeSet.has(key))  cell.classList.add('aoe');
+      else if (atkSet.has(key))  cell.classList.add('atk');
+      else if (planSet.has(key)) cell.classList.add('path-plan');
+      else if (prevSet.has(key)) cell.classList.add('path-prev');
+      else if (moveSet.has(key)) cell.classList.add('mv');
+    }
     if (selUnit && selUnit.pos[0] === x && selUnit.pos[1] === y) cell.classList.add('sel');
 
     cell.innerHTML = '';
+
+    if (isObstacle) {
+      // Render wall/obstacle
+      const w = document.createElement('div');
+      w.className = 'obs-icon';
+      w.textContent = '🧱';
+      cell.appendChild(w);
+      continue;
+    }
 
     // Height label
     if (h > 0) {
@@ -530,8 +600,26 @@ function renderGrid(st, opts = {}) {
       cell.appendChild(arr);
     }
 
-    // Unit sprite
-    const unit = st.units.find(u => u.pos[0] === x && u.pos[1] === y);
+    // Placed objects
+    const obj = placedObjects.find(o => o.pos[0] === x && o.pos[1] === y);
+    if (obj) {
+      const disp = OBJ_DISPLAY[obj.obj_type] || { emoji: '📦', color: '#888', label: obj.obj_type };
+      const od = document.createElement('div');
+      od.className = `placed-obj team${obj.teamId}`;
+      od.style.borderColor = disp.color;
+      const em = document.createElement('span');
+      em.textContent = disp.emoji;
+      od.appendChild(em);
+      const lbl = document.createElement('div');
+      lbl.className = 'obj-label';
+      lbl.textContent = `${disp.label}`;
+      lbl.style.color = disp.color;
+      od.appendChild(lbl);
+      cell.appendChild(od);
+    }
+
+    // Unit sprite (skip if placed object occupying same cell)
+    const unit = st && st.units && st.units.find(u => u.pos[0] === x && u.pos[1] === y);
     if (unit) {
       const job = JOB_DEFS[unit.jobId];
       const sp = document.createElement('div');
@@ -619,6 +707,8 @@ function logEvents(evs) {
       case 'knockback':     addLog(`${e.unitId} ${e.amount}マス吹飛`); break;
       case 'miss':          addLog(`ミス: ${e.unitId}→${e.targetId}`); break;
       case 'wait':          addLog(`${e.unitId} 待機`); break;
+      case 'place_object':  addLog(`📦 ${e.unitId} が ${e.obj.obj_type} を設置`, 'lsys'); break;
+      case 'object_expired':addLog(`📦 設置物が消滅 (${e.objId})`); break;
       case 'match_end':     addLog(`🏆 試合終了: ${e.winner === 'draw' ? '引き分け' : `チーム${e.winner + 1}勝利`} (${e.reason})`, 'lk'); break;
     }
   }

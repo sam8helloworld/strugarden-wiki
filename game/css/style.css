@@ -50,7 +50,7 @@ body {
 .jd { font-size: .6rem; color: #888; margin-top: 1px; line-height: 1.3; }
 
 .skill-pick h3 { font-size: .8rem; color: #888; margin-bottom: 5px; }
-.sk-list { display: flex; flex-direction: column; gap: 3px; }
+.sk-list { display: flex; flex-direction: column; gap: 3px; max-height: 280px; overflow-y: auto; padding-right: 2px; }
 .sk-item {
   display: flex; align-items: center; padding: 4px 6px;
   border: 1px solid #30363d; border-radius: 3px; cursor: pointer;
@@ -172,10 +172,10 @@ body {
   cursor: default; position: relative; transition: background .1s;
 }
 
-/* Height levels */
-.cell.h0 { background: #141420; }
-.cell.h1 { background: #1a2a1a; border-color: #2a3a2a; }
-.cell.h2 { background: #251a10; border-color: #3a2a18; }
+/* Height levels — clearly distinct colors with border highlights */
+.cell.h0 { background: #0e1420; border-color: #1e2435; }
+.cell.h1 { background: #142814; border-color: #28602a; box-shadow: inset 0 -2px 0 #28602a; }
+.cell.h2 { background: #2a1a08; border-color: #8a5018; box-shadow: inset 0 -3px 0 #c07020, inset 0 0 8px #40200040; }
 
 /* Overlay states */
 .cell.mv        { background: #0f2a3a; border-color: #2060a0; cursor: pointer; }
@@ -190,8 +190,10 @@ body {
 /* Height label */
 .hlabel {
   position: absolute; top: 2px; left: 3px;
-  font-size: .55rem; color: #888; line-height: 1; pointer-events: none;
+  font-size: .6rem; font-weight: bold; line-height: 1; pointer-events: none;
 }
+.cell.h1 .hlabel { color: #6c6; }
+.cell.h2 .hlabel { color: #e8a040; }
 
 /* Path step number */
 .cell-step {
@@ -203,6 +205,32 @@ body {
 .cell-arrow {
   position: absolute; bottom: 2px; right: 3px;
   font-size: .65rem; color: #6080e0; pointer-events: none;
+}
+
+/* ===== OBSTACLES ===== */
+.cell.obstacle {
+  background: #1a1a1a; border-color: #444; cursor: not-allowed;
+  box-shadow: inset 0 0 10px #00000080;
+}
+.obs-icon {
+  font-size: 1.6rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; opacity: .9;
+}
+
+/* ===== PLACED OBJECTS ===== */
+.placed-obj {
+  position: absolute; inset: 4px;
+  border: 2px solid #888; border-radius: 4px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #0d1117cc; z-index: 0;
+}
+.placed-obj.team0 { border-color: #e07070; background: #2a100acc; }
+.placed-obj.team1 { border-color: #7090e8; background: #0a102acc; }
+.placed-obj > span { font-size: 1.1rem; line-height: 1; }
+.obj-label {
+  font-size: .45rem; font-weight: bold; line-height: 1; margin-top: 1px;
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
 /* ===== UNIT SPRITES ===== */

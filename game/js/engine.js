@@ -59,11 +59,18 @@ function computeRangeCellsAllFacings(cx, cy, rangePattern, mapW, mapH) {
 
 // Height-aware 4-directional BFS with path reconstruction
 // Returns { reachable: [[x,y],...], getPath(tx,ty): [[x,y],...], dist: Map }
-function bfsMovement(fromPos, unit, allUnits, budget) {
+function bfsMovement(fromPos, unit, allUnits, budget, placedObjects = [], mapDef = MAP_DEF) {
   const [sx, sy] = fromPos;
+  const mapHeights = mapDef.heights;
   const occ = new Set(
     allUnits.filter(u => u.id !== unit.id && !u.ko).map(u => `${u.pos[0]},${u.pos[1]}`)
   );
+  // Obstacles: static map obstacles + placed objects that block movement
+  const obsSet = new Set((mapDef.obstacles || []).map(([ox, oy]) => `${ox},${oy}`));
+  for (const obj of placedObjects) {
+    if (obj.blocksMovement !== false) obsSet.add(`${obj.pos[0]},${obj.pos[1]}`);
+  }
+
   const dist = new Map();
   const prev = new Map(); // key → [px, py]
   dist.set(`${sx},${sy}`, 0);
@@ -74,12 +81,13 @@ function bfsMovement(fromPos, unit, allUnits, budget) {
     const [x, y, d] = queue.shift();
     if (d > 0) reachable.push([x, y]);
     if (d >= budget) continue;
-    const fromH = MAP_HEIGHTS[y][x];
+    const fromH = mapHeights[y][x];
     for (const [ddx, ddy] of [[-1,0],[1,0],[0,-1],[0,1]]) {
       const nx = x + ddx, ny = y + ddy;
-      if (nx < 0 || nx >= MAP_DEF.width || ny < 0 || ny >= MAP_DEF.height) continue;
+      if (nx < 0 || nx >= mapDef.width || ny < 0 || ny >= mapDef.height) continue;
       if (occ.has(`${nx},${ny}`)) continue;
-      const toH = MAP_HEIGHTS[ny][nx];
+      if (obsSet.has(`${nx},${ny}`)) continue;
+      const toH = mapHeights[ny][nx];
       if (toH - fromH > unit.cup) continue;
       if (fromH - toH > unit.cdn) continue;
       const key = `${nx},${ny}`;
@@ -111,8 +119,8 @@ function bfsMovement(fromPos, unit, allUnits, budget) {
 }
 
 // Backward-compat wrapper used by AI
-function computeMovementRange(unit, units, mapW, mapH) {
-  return bfsMovement(unit.pos, unit, units, unit.movement).reachable;
+function computeMovementRange(unit, units, mapW, mapH, placedObjects = [], mapDef = MAP_DEF) {
+  return bfsMovement(unit.pos, unit, units, unit.movement, placedObjects, mapDef).reachable;
 }
 
 // Determine which facing makes 'target' reachable for a skill range
@@ -273,6 +281,7 @@ function initBattle(config) {
     units,
     events: [],
     winner: null,
+    placedObjects: [],   // { id, teamId, pos, obj_type, hp, duration, ... }
     pendingMoves: {},    // unitId → [tx, ty]
     pendingActions: {},  // unitId → ActionCommand
   };
@@ -327,7 +336,8 @@ function processTurnStart(state) {
 }
 
 // paths: { unitId: [[x,y], ...] } — sequence of cells to move through (excludes start)
-function processMovement(state, paths) {
+// facings: { unitId: 'up'|'down'|'left'|'right' } — player-chosen facing at destination
+function processMovement(state, paths, facings = {}) {
   const events = [];
   events.push({ type: 'phase', label: '── 移動フェイズ ──' });
 
@@ -336,17 +346,25 @@ function processMovement(state, paths) {
     if (hasState(unit, 'sleep') || hasState(unit, 'freeze')) continue;
 
     const path = paths && paths[unit.id];
-    if (!path || path.length === 0) continue;
-
     const [ox, oy] = unit.pos;
-    const [tx, ty] = path[path.length - 1];
-    if (tx === ox && ty === oy) continue;
 
-    const prev = path.length >= 2 ? path[path.length - 2] : [ox, oy];
-    const newFacing = directionBetween(prev[0], prev[1], tx, ty);
-    unit.pos = [tx, ty];
-    unit.facing = newFacing;
-    events.push({ type: 'move', unitId: unit.id, from: [ox, oy], to: [tx, ty], facing: newFacing });
+    if (path && path.length > 0) {
+      const [tx, ty] = path[path.length - 1];
+      if (tx !== ox || ty !== oy) {
+        unit.pos = [tx, ty];
+        events.push({ type: 'move', unitId: unit.id, from: [ox, oy], to: [tx, ty] });
+      }
+    }
+
+    // Apply player-chosen facing (overrides movement direction)
+    if (facings[unit.id]) {
+      unit.facing = facings[unit.id];
+    } else if (path && path.length >= 2) {
+      // Fall back to movement direction for AI / no-facing-choice
+      const dest = path[path.length - 1];
+      const prev = path[path.length - 2] || [ox, oy];
+      unit.facing = directionBetween(prev[0], prev[1], dest[0], dest[1]);
+    }
   }
 
   state.pendingMoves = {};
@@ -467,7 +485,7 @@ function resolveSkill(state, unit, cmd) {
 
   // Self-targeting skills
   if (skill.attack_type === 'self') {
-    events.push(...applySkillEffects(state, unit, unit, skill));
+    events.push(...applySkillEffects(state, unit, unit, skill, null));
     return events;
   }
 
@@ -479,6 +497,30 @@ function resolveSkill(state, unit, cmd) {
     return events;
   }
   unit.facing = neededFacing;
+
+  // Place-object skills: place at target cell, no unit-hit loop needed
+  const hasPlaceEffect = skill.effects.some(e => e.kind === 'place_object');
+  if (hasPlaceEffect) {
+    for (const eff of skill.effects) {
+      if (eff.kind === 'place_object') {
+        if (!state.placedObjects) state.placedObjects = [];
+        const obj = {
+          id: `obj_${state.turn}_${unit.id}_${state.placedObjects.length}`,
+          teamId: unit.teamId,
+          pos: [tx, ty],
+          obj_type: eff.obj_type,
+          hp: eff.hp || 30,
+          duration: eff.duration || 5,
+          damage_on_contact: eff.damage_on_contact || 0,
+          heal_on_step: eff.heal_on_step || 0,
+          blocksMovement: true,
+        };
+        state.placedObjects.push(obj);
+        events.push({ type: 'place_object', unitId: unit.id, obj });
+      }
+    }
+    return events;
+  }
 
   // Compute effect area
   const effectCells = [];
@@ -513,14 +555,14 @@ function resolveSkill(state, unit, cmd) {
 
     const hitCount = skill.hit_count || 1;
     for (let h = 0; h < hitCount; h++) {
-      events.push(...applySkillEffects(state, unit, target, skill));
+      events.push(...applySkillEffects(state, unit, target, skill, [tx, ty]));
     }
   }
 
   return events;
 }
 
-function applySkillEffects(state, source, target, skill) {
+function applySkillEffects(state, source, target, skill, targetPos) {
   const events = [];
 
   for (const eff of skill.effects) {
@@ -602,6 +644,20 @@ function processTurnEnd(state) {
         events.push({ type: 'unit_despawn', unitId: unit.id });
       }
     }
+  }
+
+  // Decay placed objects
+  if (state.placedObjects) {
+    state.placedObjects = state.placedObjects.filter(obj => {
+      if (obj.duration !== undefined) {
+        obj.duration--;
+        if (obj.duration <= 0) {
+          events.push({ type: 'object_expired', objId: obj.id });
+          return false;
+        }
+      }
+      return true;
+    });
   }
 
   // Victory check

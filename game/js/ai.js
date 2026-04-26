@@ -12,7 +12,7 @@ const AI = {
     const enemies = state.units.filter(u => u.teamId !== unit.teamId && !u.ko);
     if (enemies.length === 0) return unit.pos;
 
-    const moveRange = computeMovementRange(unit, state.units, state.map.width, state.map.height);
+    const moveRange = computeMovementRange(unit, state.units, state.map.width, state.map.height, state.placedObjects || [], state.map);
     if (moveRange.length === 0) return unit.pos;
 
     const target = enemies[0];
